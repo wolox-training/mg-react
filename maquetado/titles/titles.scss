@@ -1,0 +1,16 @@
+.tools__title {
+  align-content: center;
+  display: flex;
+  align-items: center;
+
+  &-img {
+    height: $title-decoration-height;
+    width: $title-decoration-width;
+  }
+
+  & span {
+    font-size: $text-big;
+    position: relative;
+    right: 1.2rem;
+  }
+}
