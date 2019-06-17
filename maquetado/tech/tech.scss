@@ -1,0 +1,44 @@
+.tech-container {
+  background-color: $white;
+  border: 0.1rem solid $green-color;
+  border-radius: 0.5rem;
+  height: 19rem;
+  margin: 1rem;
+  width: 11rem;
+
+}
+.tech {
+  align-items: center;
+  background-color: $green-color;
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 19rem;
+  justify-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  width: 11rem;
+
+
+  &__logo {
+    & img {
+      height: $tech-logo-size;
+      padding: 0 0 1rem 0;
+      width: $tech-logo-size;
+    }
+  }
+
+  &__name {
+    padding: 0 0 1rem 0;
+  }
+
+  &__release {
+    font-weight: bolder;
+    padding: 0 0 1.5rem 0;
+  }
+
+  &__description {
+    text-align: center;
+  }
+}
