@@ -1,12 +1,3 @@
-.tech-container {
-  background-color: $white;
-  border: 0.1rem solid $green-color;
-  border-radius: 0.5rem;
-  height: 19rem;
-  margin: 1rem;
-  width: 11rem;
-
-}
 .tech {
   align-items: center;
   background-color: $green-color;
@@ -18,7 +9,19 @@
   justify-items: center;
   margin: 1rem;
   padding: 1rem;
-  width: 11rem;
+  width: 13rem;
+
+  &::after {
+    background-color: $white;
+    border: 0.1rem solid $green-color;
+    border-radius: 0.5rem;
+    content: '';
+    display: table;
+    height: 19rem;
+    transform: translate(-0.7rem,-16.6rem);
+    width: 13rem;
+    z-index: -1;
+  }
 
 
   &__logo {
