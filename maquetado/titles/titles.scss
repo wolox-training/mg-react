@@ -1,16 +1,16 @@
-.tools__title {
-  align-content: center;
-  align-items: center;
-  display: flex;
+.title {
+  font-size: $text-big;
+  margin: 0 0 0 4rem;
+  width: 100vw;
 
-  &-img {
+  &::before {
+    content: url('../maquetado/assets/triangle.svg');
+    display: inline-block;
     height: $title-decoration-height;
-    width: $title-decoration-width;
-  }
-
-  & span {
-    font-size: $text-big;
     position: relative;
-    right: 1.2rem;
+    right: -1.2rem;
+    top: 2.2rem;
+    width: $title-decoration-width;
+    z-index: -1;
   }
 }
