@@ -20,3 +20,4 @@ yarn-error.log*
 
 ## System ##
 .DS_Store
+.vscode
