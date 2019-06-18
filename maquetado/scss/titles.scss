@@ -1,0 +1,18 @@
+.title {
+  font-size: $text-big;
+  margin-left: 20px;
+  width: 100vw;
+
+  &::before {
+    content: '';
+    background-image: url('../maquetado/assets/triangle.svg');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: $title-decoration-height;
+    position: relative;
+    right: -19px;
+    top: 35px;
+    width: $title-decoration-width;
+    z-index: -1;
+  }
+}
