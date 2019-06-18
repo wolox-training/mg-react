@@ -4,9 +4,9 @@
   width: 100%;
 
   &::before {
-    content: '';
     background-image: url('./assets/triangle.svg');
     background-repeat: no-repeat;
+    content: '';
     display: inline-block;
     height: $title-decoration-height;
     position: relative;
