@@ -1,15 +1,17 @@
 .title {
   font-size: $text-big;
-  margin: 0 0 0 4rem;
-  width: 100vw;
+  margin-left: 20px;
+  width: 100%;
 
   &::before {
-    content: url('../maquetado/assets/triangle.svg');
+    background-image: url('./assets/triangle.svg');
+    background-repeat: no-repeat;
+    content: '';
     display: inline-block;
     height: $title-decoration-height;
     position: relative;
-    right: -1.2rem;
-    top: 2.2rem;
+    right: -19px;
+    top: 35px;
     width: $title-decoration-width;
     z-index: -1;
   }
