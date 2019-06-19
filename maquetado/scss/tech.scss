@@ -5,11 +5,13 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  height: 304px;
+  height: 100%;
   justify-items: center;
   margin: 16px;
+  max-height: 304px;
+  max-width: 208px;
   padding: 16px;
-  width: 208px;
+  width: 100%;
 
   &::after {
     background-color: $white;
@@ -27,18 +29,18 @@
   &__logo {
     & img {
       height: $tech-logo-size;
-      padding: 0 0 16px 0;
+      padding: 0 0 16px;
       width: $tech-logo-size;
     }
   }
 
   &__name {
-    padding: 0 0 16px 0;
+    padding: 0 0 16px;
   }
 
   &__release {
     font-weight: bolder;
-    padding: 0 0 24px 0;
+    padding: 0 0 24px;
   }
 
   &__description {
