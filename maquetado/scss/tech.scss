@@ -1,0 +1,43 @@
+.tech {
+  align-items: center;
+  background-color: $green;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 16px;
+  max-width: 208px;
+  padding: 16px;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    border: 2px solid $green;
+    border-radius: 8px;
+    content: '';
+    height: 100%;
+    position: absolute;
+    transform: translate(-10px, -25px);
+    width: 100%;
+    z-index: -1;
+  }
+
+  &-logo {
+    height: $tech-logo-size;
+    margin-bottom: 16px;
+    width: $tech-logo-size;
+  }
+
+  &-name {
+    margin-bottom: 16px;
+  }
+
+  &-release {
+    font-weight: bolder;
+    margin-bottom: 24px;
+  }
+
+  &-description {
+    text-align: center;
+  }
+}
