@@ -1,26 +1,17 @@
-.header {
-  height: $nav-height;
-}
 .navbar {
-  background-color: white;
-  box-shadow: 0 0 16px $black;
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0 0 16px rgba($black, 0.3);
   display: flex;
-  height: 100%;
+  height: $nav-height;
   justify-content: space-between;
-  max-height: $nav-height;
-  position: fixed;
   padding: 0 16px;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
   
-  
   &-logo {
-    align-self: center;
     height: $nav-logo-height;
-  }
-
-  &-title {
-    align-self: center;
   }
 }
