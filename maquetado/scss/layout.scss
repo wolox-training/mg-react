@@ -1,7 +1,22 @@
 .techs {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-  margin: 70px auto 0;
-  width: 1024px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.first {
+  grid-row: 1 / span 3;
+  position: relative;
+  
+  &::after {
+    border-right: 2px solid $green;
+    content: '';
+    height: 650px;
+    position: absolute;
+    top: -148px;
+    transform: translate(0, -25px);
+    width: 100%;
+  }
 }
