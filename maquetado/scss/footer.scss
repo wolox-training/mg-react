@@ -6,10 +6,10 @@
   padding: 20px 20px;
 
   &-title {
-    color: white;
+    color: $white;
     font-size: $text-big;
     font-weight: 200;
-    margin:20px 0; 
+    margin: 20px 0; 
   }
 
   &-logo {
@@ -18,7 +18,7 @@
 
   &-legal {
     align-self: flex-end;
-    color: white;
+    color: $white;
     font-size: $text-small;
   }
 }
