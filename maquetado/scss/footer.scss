@@ -11,14 +11,14 @@
     font-weight: 200;
     margin:20px 0; 
   }
-  
+
   &-logo {
     margin-bottom: 10px;
   }
 
   &-legal {
+    align-self: flex-end;
     color: white;
     font-size: $text-small;
-    align-self: flex-end;
   }
 }
