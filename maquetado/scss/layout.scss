@@ -5,3 +5,43 @@
   justify-content: center;
   margin-bottom: 40px;
 }
+
+@media only screen and (max-width: 1024px) {
+  
+  .title {
+    text-align: center;
+  }
+  .techs {
+    grid-template-columns: 1fr;
+  }
+
+  .tech {
+    border-bottom: 2px solid $green;
+
+    &-description {
+      width: 300px;
+    }
+
+    &-release {
+      width: 300px;
+      text-align: center;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .navbar {
+    display: block;
+
+    &-title {
+      display: none;
+    }
+  }
+
+  .footer-legal {
+    display: contents;
+  }
+
+}
