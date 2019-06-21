@@ -1,22 +1,29 @@
-.tech {
-  display: grid;
-  grid-template-columns: 1fr;
-  place-items: center;
+.tech { 
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
+
+  &:first-child {
+    border-right: 2px solid $green;
+    grid-row: 1 / span 3;
+  }
 
   &-logo {
     height: $tech-logo-size;
-    margin-bottom: 16px;
     width: $tech-logo-size;
   }
 
   &-name {
-    margin-bottom: 16px;
+    margin: 20px;
+    text-align: center;
   }
 
   &-release {
     font-weight: bolder;
     margin-bottom: 24px;
+    text-align: center;
   }
 
   &-description {
