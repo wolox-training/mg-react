@@ -1,14 +1,8 @@
 .tech {
-  align-items: center;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  margin: 16px;
-  max-width: 208px;
-  padding: 16px;
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  padding: 20px;
 
   &-logo {
     height: $tech-logo-size;

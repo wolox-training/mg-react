@@ -1,22 +1,15 @@
 .techs {
-  align-items: center;
+  align-content: space-around;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-gap: 30px;
+  grid-template-columns: 190px 190px 190px;
   justify-content: center;
   margin-bottom: 40px;
 }
 
 .first {
+  border-right: 2px solid $green;
   grid-row: 1 / span 3;
-  position: relative;
-  
-  &::after {
-    border-right: 2px solid $green;
-    content: '';
-    height: 650px;
-    position: absolute;
-    top: -148px;
-    transform: translate(0, -25px);
-    width: 100%;
-  }
+  justify-items: center;
+  padding: 230px 20px;
 }
