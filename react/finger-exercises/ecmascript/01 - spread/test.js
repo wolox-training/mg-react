@@ -5,7 +5,7 @@ describe('Spread operator', () => {
     expect(min(1)).toBe(1);
     expect(min(2)).toBe(2);
   });
-  xit('min can return the minimum based on a list', () => {
+  it('min can return the minimum based on a list', () => {
     expect(min([1, 2])).toBe(1);
     expect(min([2, 1])).toBe(1);
   });
