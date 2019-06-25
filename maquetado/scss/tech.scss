@@ -1,45 +1,29 @@
-.tech {
+.tech { 
   align-items: center;
-  background-color: $green;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  margin: 16px;
-  max-width: 208px;
-  padding: 16px;
-  position: relative;
-  width: 100%;
+  justify-content: center;
+  padding: 20px;
 
-  &::after {
-    border: 2px solid $green;
-    border-radius: 8px;
-    content: '';
-    height: 100%;
-    position: absolute;
-    transform: translate(-10px, -25px);
-    transition: 0.5s;
-    width: 100%;
-    z-index: -1;
-  }
-
-  &:hover::after {
-    transform: translate(8px,-8px);
+  &:first-child {
+    border-right: 2px solid $green;
+    grid-row: 1 / span 3;
   }
 
   &-logo {
     height: $tech-logo-size;
-    margin-bottom: 16px;
     width: $tech-logo-size;
   }
 
   &-name {
-    margin-bottom: 16px;
+    margin: 20px;
+    text-align: center;
   }
 
   &-release {
     font-weight: bolder;
     margin-bottom: 24px;
+    text-align: center;
   }
 
   &-description {

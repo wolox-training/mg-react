@@ -1,7 +1,7 @@
 .techs {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-  margin: 70px auto 0;
-  width: 1024px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 190px);
+  justify-content: center;
+  margin-bottom: 40px;
 }
