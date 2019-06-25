@@ -1,7 +1,7 @@
 import { min, copy, reverseMerge, filterAttribs } from '.';
 
 describe('Spread operator', () => {
-  xit('min returns the param if is the only argument', () => {
+  it('min returns the param if is the only argument', () => {
     expect(min(1)).toBe(1);
     expect(min(2)).toBe(2);
   });
