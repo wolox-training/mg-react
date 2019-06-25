@@ -43,7 +43,7 @@ describe('Spread operator', () => {
     expect(reverseMerge([1, 1, 1], [3, 2])).toEqual([3, 2, 1, 1, 1]);
     expect(reverseMerge([1, 2], [3, 4, 5])).toEqual([3, 4, 5, 1, 2]);
   });
-  xit('reverseMerge does not mutate the arguments', () => {
+  it('reverseMerge does not mutate the arguments', () => {
     const example1 = [1, 2];
     const example2 = [3, 4];
 
