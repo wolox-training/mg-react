@@ -38,7 +38,7 @@ describe('Spread operator', () => {
     expect(example).toEqual([1]);
     expect(copiedExample).toEqual([]);
   });
-  xit('reverseMerge returns a new array based on two, but it switches the order of them', () => {
+  it('reverseMerge returns a new array based on two, but it switches the order of them', () => {
     expect(reverseMerge([1], [2])).toEqual([2, 1]);
     expect(reverseMerge([1, 1, 1], [3, 2])).toEqual([3, 2, 1, 1, 1]);
     expect(reverseMerge([1, 2], [3, 4, 5])).toEqual([3, 4, 5, 1, 2]);
