@@ -11,5 +11,8 @@ export function min(...args) {
 }
 
 export function copy(args) {
+  if (isArray(args)) {
+    return [...args];
+  }
   return Object.assign({}, args);
 }

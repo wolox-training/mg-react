@@ -27,7 +27,7 @@ describe('Spread operator', () => {
     expect(example).toEqual({ a: 1, b: 2, c: 3 });
     expect(copiedExample).toEqual({ a: 1, b: 2 });
   });
-  xit('copy can copy arrays', () => {
+  it('copy can copy arrays', () => {
     const example = [];
     const copiedExample = copy(example);
 
