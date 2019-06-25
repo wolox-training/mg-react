@@ -17,9 +17,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .navbar {
-    &-title {
-      display: none;
-    }
+  .navbar-title {
+    display: none;
   }
 }
