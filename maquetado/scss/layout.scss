@@ -7,41 +7,9 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  
-  .title {
-    text-align: center;
-  }
   .techs {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
   }
-
-  .tech {
-    border-bottom: 2px solid $green;
-
-    &-description {
-      width: 300px;
-    }
-
-    &-release {
-      width: 300px;
-      text-align: center;
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .navbar {
-    display: block;
-
-    &-title {
-      display: none;
-    }
-  }
-
-  .footer-legal {
-    display: contents;
-  }
-
 }
