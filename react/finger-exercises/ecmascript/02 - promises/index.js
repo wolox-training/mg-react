@@ -2,11 +2,15 @@
 
 export function delay(period) {
   const startTime = Date.now();
-  return new Promise((resolve) => {
+  const MAX_TIME = 4900;
+  return new Promise((resolve, reject) => {
     setInterval(() => {
       const endTime = Date.now();
       if (endTime - startTime > period) {
         resolve(endTime - startTime);
+      } else if (endTime - startTime > MAX_TIME) {
+        const patient = Error('This time is too much !');
+        reject(patient);
       }
     }, 100);
   });
