@@ -1,16 +1,20 @@
 import { isArray } from './utils';
 
 export function min(...args) {
-  if (args.length === 0) {
+  if (args[0] === undefined) {
     return undefined;
   }
-  const values = isArray(args[0]) ? args[0] : args;
-
-  return Math.min(...values);
+  if (isArray(args[0])) {
+    return Math.min(...args[0]);
+  }
+  return Math.min(...args);
 }
 
 export function copy(args) {
-  return isArray(args) ? [...args] : { ...args };
+  if (isArray(args)) {
+    return [...args];
+  }
+  return Object.assign({}, args);
 }
 
 export function reverseMerge(arrOne, ArrTwo) {
