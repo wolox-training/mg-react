@@ -21,3 +21,16 @@ export function reverseMerge(arrOne, ArrTwo) {
   const reverseMergeArr = [...ArrTwo, ...arrOne];
   return reverseMergeArr;
 }
+
+export function filterAttribs(args) {
+  const banedKey = ['a', 'b'];
+  const filterObj = {};
+  Object.keys(args)
+    .filter(key => !banedKey.includes(key))
+    .map(key => {
+      filterObj[key] = args[key];
+      return filterObj;
+    });
+
+  return filterObj;
+}
