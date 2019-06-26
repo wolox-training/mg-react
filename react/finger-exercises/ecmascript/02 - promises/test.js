@@ -3,7 +3,7 @@ import { delay, asyncDelay } from '.';
 const TIME = 500;
 
 describe('Promises', () => {
-  xit('delay works well', () => delay(TIME)
+  it('delay works well', () => delay(TIME)
     .then(delayedTime => {
       expect(delayedTime).toBeGreaterThanOrEqual(TIME - 100);
       expect(delayedTime).toBeLessThanOrEqual(TIME + 100);
