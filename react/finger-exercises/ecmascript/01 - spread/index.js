@@ -22,7 +22,6 @@ export function reverseMerge(arrOne, ArrTwo) {
   return reverseMergeArr;
 }
 
-export function filterAttribs(args) {
-  const { a, b, ...filterObj } = args;
+export function filterAttribs({ a, b, ...filterObj }) {
   return filterObj;
 }
