@@ -1,7 +1,7 @@
 import { isArray } from './utils';
 
 export function min(...args) {
-  if (args.length === 0) {
+  if (!args.length) {
     return undefined;
   }
   const values = isArray(args[0]) ? args[0] : args;
