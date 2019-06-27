@@ -19,6 +19,5 @@ export function delay(period) {
 }
 
 export async function asyncDelay(period) {
-  const result = await delay(period);
-  return result;
+  return delay(period);
 }
