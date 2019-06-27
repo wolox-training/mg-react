@@ -18,6 +18,6 @@ export function delay(period) {
   });
 }
 
-export async function asyncDelay(period) {
+export function asyncDelay(period) {
   return delay(period);
 }
