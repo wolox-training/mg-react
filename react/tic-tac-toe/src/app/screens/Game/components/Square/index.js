@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
-const Square = props => (
-  <button type="button" className={styles.square}>
-    {props.value}
-  </button>
-);
+class Square extends Component {
+  state = {
+    value: null
+  };
+
+  handleClick = () => {
+    this.setState({ value: 'X' });
+  };
+
+  render() {
+    return (
+      <button key={this.props.id} type="button" className={styles.square} onClick={this.handleClick}>
+        {this.state.value}
+      </button>
+    );
+  }
+}
+
+Square.handleClick = () => {
+  this.setState({ value: 'X' });
+};
 
 Square.propTypes = {
-  value: PropTypes.number
+  id: PropTypes.number
 };
 
 export default Square;
