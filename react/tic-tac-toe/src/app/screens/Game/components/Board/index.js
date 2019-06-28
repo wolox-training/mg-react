@@ -6,20 +6,21 @@ import styles from './styles.module.scss';
 
 class Board extends Component {
   state = {
-    squares: Array(9).fill(null)
+    squares: Array(9).fill(null),
+    xIsNext: true
   };
 
   handleClick = id => {
-    const { squares } = this.state;
+    const { squares, xIsNext } = this.state;
     const slicedSquares = squares.slice();
-    slicedSquares[id] = 'X';
-    this.setState({ squares: slicedSquares });
+    slicedSquares[id] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({ squares: slicedSquares, xIsNext: !xIsNext });
   };
 
   renderSquare = id => <Square id={id} value={this.state.squares[id]} onClick={this.handleClick} />;
 
   render() {
-    const status = 'Next player: X';
+    const status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     return (
       <div>
         <div className={styles.status}>{status}</div>
