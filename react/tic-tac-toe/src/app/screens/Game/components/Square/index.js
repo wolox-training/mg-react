@@ -4,29 +4,25 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 class Square extends Component {
-  state = {
-    value: null
-  };
-
   handleClick = () => {
-    this.setState({ value: 'X' });
+    const { onClick, id } = this.props;
+    onClick(id);
   };
 
   render() {
+    const { value } = this.props;
     return (
-      <button key={this.props.id} type="button" className={styles.square} onClick={this.handleClick}>
-        {this.state.value}
+      <button type="button" className={styles.square} onClick={this.handleClick}>
+        {value}
       </button>
     );
   }
 }
 
-Square.handleClick = () => {
-  this.setState({ value: 'X' });
-};
-
 Square.propTypes = {
-  id: PropTypes.number
+  id: PropTypes.number,
+  value: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default Square;

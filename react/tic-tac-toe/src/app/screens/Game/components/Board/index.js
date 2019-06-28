@@ -5,9 +5,18 @@ import Square from '../Square';
 import styles from './styles.module.scss';
 
 class Board extends Component {
-  renderSquare(id) {
-    return <Square id={id} />;
-  }
+  state = {
+    squares: Array(9).fill(null)
+  };
+
+  handleClick = id => {
+    const { squares } = this.state;
+    const slicedSquares = squares.slice();
+    slicedSquares[id] = 'X';
+    this.setState({ squares: slicedSquares });
+  };
+
+  renderSquare = id => <Square id={id} value={this.state.squares[id]} onClick={this.handleClick} />;
 
   render() {
     const status = 'Next player: X';
