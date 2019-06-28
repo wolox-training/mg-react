@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { number, string, func } from 'prop-types';
 
 import styles from './styles.module.scss';
 
@@ -20,9 +20,9 @@ class Square extends Component {
 }
 
 Square.propTypes = {
-  id: PropTypes.number,
-  value: PropTypes.string,
-  onClick: PropTypes.func
+  id: number,
+  value: string,
+  onClick: func
 };
 
 export default Square;
