@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { number, string, func } from 'prop-types';
 
 import styles from './styles.module.scss';
 
-const Square = () => (
-  <button type="button" className={styles.square}>
-    {/* TODO */}
-  </button>
-);
+class Square extends Component {
+  handleClick = () => {
+    const { onClick, id } = this.props;
+    onClick(id);
+  };
+
+  render() {
+    const { value } = this.props;
+    return (
+      <button type="button" className={styles.square} onClick={this.handleClick}>
+        {value}
+      </button>
+    );
+  }
+}
+
+Square.propTypes = {
+  id: number.isRequired,
+  value: string.isRequired,
+  onClick: func.isRequired
+};
 
 export default Square;
