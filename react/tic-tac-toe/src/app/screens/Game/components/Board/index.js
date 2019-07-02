@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
+import { arrayOf, func, string } from 'prop-types';
 
 import Square from '../Square';
 
 import styles from './styles.module.scss';
 
 class Board extends Component {
-  state = {
-    squares: Array(9).fill(null),
-    xIsNext: true
-  };
-
-  handleClick = id => {
-    const { squares, xIsNext } = this.state;
-    const slicedSquares = squares.slice();
-    slicedSquares[id] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({ squares: slicedSquares, xIsNext: !xIsNext });
-  };
-
-  renderSquare = id => <Square id={id} value={this.state.squares[id]} onClick={this.handleClick} />;
+  renderSquare = id => <Square id={id} value={this.props.squares[id]} onClick={this.props.onClick} />;
 
   render() {
-    const status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     return (
       <div>
-        <div className={styles.status}>{status}</div>
         <div className={styles.boardRow}>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -43,5 +30,10 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {
+  squares: arrayOf(string),
+  onClick: func
+};
 
 export default Board;
