@@ -20,9 +20,9 @@ class Square extends Component {
 }
 
 Square.propTypes = {
-  id: number,
-  value: string,
-  onClick: func
+  id: number.isRequired,
+  value: string.isRequired,
+  onClick: func.isRequired
 };
 
 export default Square;
