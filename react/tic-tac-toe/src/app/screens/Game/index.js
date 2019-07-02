@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import styles from './styles.module.scss';
 import Board from './components/Board';
 import Moves from './components/Moves';
+import styles from './styles.module.scss';
 
 class Game extends Component {
   state = {
@@ -45,12 +45,10 @@ class Game extends Component {
     });
   };
 
-  handleMove = move => {
-    this.setState({ stepNumber: move, xIsNext: move % 2 === 0 });
-  };
+  handleMove = move => this.setState({ stepNumber: move, xIsNext: move % 2 === 0 });
 
   render() {
-    const { history, stepNumber } = this.state;
+    const { history, stepNumber, xIsNext } = this.state;
     const current = history[stepNumber];
     const winner = this.calculateWinner(current.squares);
     let status = null;
@@ -67,7 +65,7 @@ class Game extends Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
 
     return (

@@ -18,9 +18,9 @@ class Moves extends Component {
 }
 
 Moves.propTypes = {
-  desc: string,
-  move: number,
-  onClick: func
+  desc: string.isRequired,
+  move: number.isRequired,
+  onClick: func.isRequired
 };
 
 export default Moves;
