@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import Moves from './components/Moves';
 
 class Game extends Component {
   state = {
@@ -19,7 +20,6 @@ class Game extends Component {
 
     lines.forEach(line => {
       const [a, b, c] = line;
-
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
@@ -54,14 +54,12 @@ class Game extends Component {
     const current = history[stepNumber];
     const winner = this.calculateWinner(current.squares);
     let status = null;
-
-    const moves = history.map(move => {
-      const desc = move ? `Go to move # ${{ move }}` : 'Go to game start';
+    const moves = history.map((step, move) => {
+      const desc = move > 0 ? `Go to move # ${move}` : 'Go to game start';
+      const moveKey = move + 10;
       return (
-        <li key={move}>
-          <button type="button" onClick={this.handleMove}>
-            {desc}
-          </button>
+        <li key={moveKey}>
+          <Moves desc={desc} onClick={this.handleMove} move={move} />
         </li>
       );
     });
