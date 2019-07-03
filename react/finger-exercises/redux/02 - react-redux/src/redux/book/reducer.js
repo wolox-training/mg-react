@@ -6,16 +6,6 @@ const initialState = {
   originalData: []
 };
 
-/* {
-  if (item.id === action.payload) {
-    item.quantity += 1;
-    return item;
-  }
-} */
-function addBook(books, idTofilter) {
-  return books;
-}
-
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_BOOKS: // TODO to implement the logic
@@ -35,7 +25,10 @@ function reducer(state = initialState, action) {
         bookSelected: state.bookSelected.filter(item => item.id !== action.payload)
       };
     case actions.SEARCH_ITEM: // TODO to implement the logic
-      return { ...state };
+      return {
+        ...state,
+        books: state.books.filter(book => book.name.toLowerCase().indexOf(action.payload.toLowerCase()) > -1)
+      };
     default:
       return state;
   }
