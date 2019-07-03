@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
+import bookActions from '@redux/book/actions';
 
 import Book from './components/Book';
 import Search from './components/Search';
@@ -20,16 +21,21 @@ class App extends Component {
       this.setState({ books, bookSelected });
     });
     // TODO to implement the dispatch
+    store.dispatch(bookActions.getBooks());
   }
 
   // TODO to implement the dispatch
   onSearch = value => {};
 
   // TODO to implement the dispatch
-  addToCart = item => {};
+  addToCart = item => {
+    store.dispatch(bookActions.addToCart(item));
+  };
 
   // TODO to implement the dispatch
-  addItem = itemId => {};
+  addItem = itemId => {
+    store.dispatch(bookActions.addItem(itemId));
+  };
 
   // TODO to implement the dispatch
   removeItem = itemId => {};
