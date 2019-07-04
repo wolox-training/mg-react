@@ -16,7 +16,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         bookSelected: state.bookSelected.map(item =>
-          item.id === action.payload ? { ...item, quantity: (item.quantity += 1) } : { ...item }
+          item.id === action.payload ? { ...item, quantity: (item.quantity += 1) } : item
         )
       };
     case actions.REMOVE_ITEM: // TODO to implement the logic
