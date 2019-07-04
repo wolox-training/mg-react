@@ -24,11 +24,24 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: state.bookSelected.filter(item => item.id !== action.payload)
       };
-    case actions.SEARCH_ITEM: // TODO to implement the logic
+    case actions.SEARCH_ITEM: {
+      // TODO to implement the logic
+      const originalData = state.originalData.length === 0 ? state.books : state.originalData;
+      const filterText = action.payload.toLowerCase().trim();
+      let filterBooks = [];
+
+      if (filterText !== '') {
+        filterBooks = originalData.filter(book => book.name.toLowerCase().includes(filterText));
+      } else {
+        filterBooks = state.originalData;
+      }
+
       return {
         ...state,
-        books: state.books.filter(book => book.name.toLowerCase().indexOf(action.payload.toLowerCase()) > -1)
+        originalData,
+        books: filterBooks
       };
+    }
     default:
       return state;
   }
