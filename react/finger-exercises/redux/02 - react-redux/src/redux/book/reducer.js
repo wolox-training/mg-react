@@ -26,11 +26,11 @@ function reducer(state = initialState, action) {
       };
     case actions.SEARCH_ITEM: {
       // TODO to implement the logic
-      const originalData = state.originalData.length === 0 ? state.books : state.originalData;
+      const originalData = state.originalData.length ? state.originalData : state.books;
       const filterText = action.payload.toLowerCase().trim();
       let filterBooks = [];
 
-      if (filterText !== '') {
+      if (filterText) {
         filterBooks = originalData.filter(book => book.name.toLowerCase().includes(filterText));
       } else {
         filterBooks = state.originalData;
