@@ -9,7 +9,7 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_BOOKS: // TODO to implement the logic
-      return { ...state, books: action.payload };
+      return { ...state, books: action.payload, originalData: action.payload };
     case actions.ADD_TO_CART: // TODO to implement the logic
       return { ...state, bookSelected: [...state.bookSelected, action.payload] };
     case actions.ADD_ITEM: // TODO to implement the logic
@@ -26,20 +26,15 @@ function reducer(state = initialState, action) {
       };
     case actions.SEARCH_ITEM: {
       // TODO to implement the logic
-      const originalData = state.originalData.length ? state.originalData : state.books;
       const filterText = action.payload.toLowerCase().trim();
-      let filterBooks = [];
 
-      if (filterText) {
-        filterBooks = originalData.filter(book => book.name.toLowerCase().includes(filterText));
-      } else {
-        filterBooks = state.originalData;
-      }
+      const books = filterText
+        ? state.books.filter(book => book.name.toLowerCase().includes(filterText))
+        : state.originalData;
 
       return {
         ...state,
-        originalData,
-        books: filterBooks
+        books
       };
     }
     default:
