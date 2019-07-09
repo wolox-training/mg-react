@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Spinner from 'react-spinkit';
 
-// eslint-disable-next-line import/no-unresolved
-import getMatches from '~services/MatchesService';
+import getMatches from '../../../../../services/MatchesService';
 
 class Matches extends Component {
   state = {
@@ -12,8 +11,11 @@ class Matches extends Component {
 
   loadMatches = async () => {
     const matches = await getMatches();
-    // eslint-disable-next-line babel/no-unused-expressions
-    matches ? this.setState({ loading: false, matches }) : this.setState({ loading: true, matches });
+    if (matches) {
+      this.setState({ loading: false, matches });
+    } else {
+      this.setState({ loading: true, matches });
+    }
   };
 
   componentDidMount() {
