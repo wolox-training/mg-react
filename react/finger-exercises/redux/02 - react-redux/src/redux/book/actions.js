@@ -1,4 +1,4 @@
-import getBooks from '../../services/BookServices';
+import getBooks from '@services/BookServices';
 /**
  * See the @@BOOKS? That's the namespace.
  * We use it to ensure an action type belongs to only one store branch. Also,
@@ -17,7 +17,6 @@ export const actions = {
 
 const actionsCreators = {
   getBooks: () => async dispatch => {
-    dispatch({ type: actions.GET_BOOKS });
     const response = await getBooks.then(res => res);
     if (response.length) {
       dispatch({
