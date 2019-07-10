@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { func } from 'prop-types';
 
 import LoginForm from './components/LoginForm';
 
-class Login extends Component {
-  handleSubmit = values => values;
-
-  render() {
-    return <LoginForm onSubmit={this.handleSubmit} />;
-  }
+function Login({ onSubmit }) {
+  return <LoginForm onSubmit={onSubmit} />;
 }
+
+Login.propTypes = {
+  onSubmit: func.isRequired
+};
 
 export default Login;
