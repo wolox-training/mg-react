@@ -11,11 +11,7 @@ class Matches extends Component {
 
   loadMatches = async () => {
     const matches = await getMatches();
-    if (matches) {
-      this.setState({ loading: false, matches });
-    } else {
-      this.setState({ loading: true, matches });
-    }
+    this.setState({ loading: false, matches });
   };
 
   componentDidMount() {
@@ -30,7 +26,7 @@ class Matches extends Component {
           <Spinner name="ball-scale-ripple" color="green" />
         ) : (
           <ul>
-            <li>
+            <Fragment>
               <span role="img" aria-label="coup">
                 🏆
               </span>
@@ -38,7 +34,7 @@ class Matches extends Component {
               <span role="img" aria-label="coup">
                 🏆
               </span>
-            </li>
+            </Fragment>
             {matches.map(({ createdAt, player_one: playerOne, player_two: playerTwo, winner }) => (
               <li key={createdAt}>
                 {playerOne} v {playerTwo}: {winner}
