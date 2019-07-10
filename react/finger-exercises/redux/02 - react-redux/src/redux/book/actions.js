@@ -25,8 +25,7 @@ const actionsCreators = {
       });
     } else {
       dispatch({
-        type: actions.GET_BOOKS_FAILURE,
-        payload: []
+        type: actions.GET_BOOKS_FAILURE
       });
     }
   },
