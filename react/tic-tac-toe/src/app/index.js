@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 
 import store from '../redux/store';
 
-// TODO import Game from './screens/Game';
 import Login from './screens/Login';
 
 import '../scss/application.scss';
