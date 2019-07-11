@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Board from './components/Board';
+import Matches from './components/Matches';
 import Moves from './components/Moves';
 import styles from './styles.module.scss';
 
@@ -77,6 +78,7 @@ class Game extends Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
+        <Matches />
       </div>
     );
   }
