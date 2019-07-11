@@ -1,24 +1,58 @@
-/* eslint-disable react/jsx-no-bind */
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { shape, func, bol } from 'prop-types';
 
 import Game from '../../screens/Game';
-import Login from '../../screens/Login';
+import actionsCreator from '../../../redux/login/actions';
 
 import AuthInfo from './components/AuthInfo';
+import AuthRoute from './components/AuthRoute';
 
-function LoginRouter() {
-  const loggedin = false;
-  return (
-    <Router>
-      <Fragment>
-        <AuthInfo />
-        <Switch>
-          <Route path="/" component={() => (loggedin ? <Game /> : <Login />)} />
-        </Switch>
-      </Fragment>
-    </Router>
-  );
+class LoginRouter extends Component {
+  handleSubmit = values => {
+    const { login } = this.props;
+    login(values);
+  };
+
+  handleClick = () => {
+    const { logout } = this.props;
+    logout();
+  };
+
+  render() {
+    const { islogged, isAuth } = this.props;
+    return (
+      <Router>
+        <Fragment>
+          {islogged && <AuthInfo isAuth={isAuth} onClick={this.handleClick} />}
+          <Switch>
+            <AuthRoute component={Game} onSubmit={this.handleSubmit} isAuth={isAuth} />
+          </Switch>
+        </Fragment>
+      </Router>
+    );
+  }
 }
 
-export default LoginRouter;
+LoginRouter.propTypes = {
+  login: func.isRequired,
+  logout: func.isRequired,
+  isAuth: bol,
+  islogged: shape({})
+};
+
+const mapStateToProps = store => ({
+  islogged: store.login.islogged,
+  isAuth: store.login.isAuth
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: values => dispatch(actionsCreator.login(values)),
+  logout: () => dispatch(actionsCreator.logout())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginRouter);
