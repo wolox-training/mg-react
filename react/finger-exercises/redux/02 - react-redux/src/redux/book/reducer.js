@@ -8,7 +8,9 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.GET_BOOKS: // TODO to implement the logic
+    case actions.GET_BOOKS_FAILURE:
+      return { ...state, books: [] };
+    case actions.GET_BOOKS_SUCCESS: // TODO to implement the logic
       return { ...state, books: action.payload, originalData: action.payload };
     case actions.ADD_TO_CART: // TODO to implement the logic
       return { ...state, bookSelected: [...state.bookSelected, action.payload] };

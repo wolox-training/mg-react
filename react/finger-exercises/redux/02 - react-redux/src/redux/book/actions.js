@@ -1,5 +1,4 @@
-import { DATA } from '@constants/data';
-
+import getBooks from '@services/BookServices';
 /**
  * See the @@BOOKS? That's the namespace.
  * We use it to ensure an action type belongs to only one store branch. Also,
@@ -8,6 +7,8 @@ import { DATA } from '@constants/data';
  */
 export const actions = {
   GET_BOOKS: '@@BOOK/GET_BOOKS',
+  GET_BOOKS_SUCCESS: '@@BOOK/GET_BOOKS_SUCCESS',
+  GET_BOOKS_FAILURE: '@@BOOK/GET_BOOKS_FAILURE',
   ADD_TO_CART: '@@BOOK/ADD_TO_CART',
   ADD_ITEM: '@@BOOK/ADD_ITEM',
   REMOVE_ITEM: '@@BOOK/REMOVE_ITEM',
@@ -15,10 +16,19 @@ export const actions = {
 };
 
 const actionsCreators = {
-  getBooks: () => ({
-    type: actions.GET_BOOKS,
-    payload: DATA
-  }),
+  getBooks: () => async dispatch => {
+    const response = await getBooks.then(res => res);
+    if (response.length) {
+      dispatch({
+        type: actions.GET_BOOKS_SUCCESS,
+        payload: response
+      });
+    } else {
+      dispatch({
+        type: actions.GET_BOOKS_FAILURE
+      });
+    }
+  },
   addToCart: item => ({
     type: actions.ADD_TO_CART,
     payload: item
