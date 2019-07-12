@@ -1,9 +1,13 @@
 /* eslint-disable react/jsx-no-bind */
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { Fragment } from 'react';
 =======
 import React from 'react';
 >>>>>>> dealing with the private route component
+=======
+import React, { Fragment } from 'react';
+>>>>>>> Authenticate components
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Game from '../../screens/Game';
