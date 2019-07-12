@@ -27,7 +27,7 @@ class customInput extends Component {
       <div className={cx('custom-input-container', { dirty }, this.getValidityClassName(meta))}>
         <input {...input} type={type} className={cx('custon-input')} />
         <label>{label}</label>
-        {error && touched && !active && <div className="feedback-text error-text">{error}</div>}
+        {error && touched && !active && <div className={cx('feedback-text', 'error-text')}>{error}</div>}
       </div>
     );
   }
