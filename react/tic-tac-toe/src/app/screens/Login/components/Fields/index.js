@@ -24,15 +24,8 @@ class customInput extends Component {
     const { label, input, type, meta } = this.props;
     const { dirty, error, touched, active } = meta;
     return (
-      <div
-        className={cx(
-          'custom-input-container',
-          { 'flex-row-reverse': type === 'checkbox' },
-          { dirty },
-          this.getValidityClassName(meta)
-        )}
-      >
-        <input {...input} type={type} />
+      <div className={cx('custom-input-container', { dirty }, this.getValidityClassName(meta))}>
+        <input {...input} type={type} className={cx('custon-input')} />
         <label>{label}</label>
         {error && touched && !active && <div className="feedback-text error-text">{error}</div>}
       </div>

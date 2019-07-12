@@ -5,12 +5,12 @@ import { func } from 'prop-types';
 import customInput from '../Fields';
 import { required, minLength, isMail, validate } from '../Validation';
 
-import styles from './styles.modules.scss';
+import './styles.modules.scss';
 
 const LoginForm = props => {
   const { handleSubmit } = props;
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className="login">
       <Field name="email" component={customInput} type="text" label="Mail" validate={[required, isMail]} />
       <Field
         name="password"
@@ -19,7 +19,9 @@ const LoginForm = props => {
         label="Password"
         validate={[required, minLength]}
       />
-      <button type="submit">Login</button>
+      <button type="submit" className="submit">
+        Login
+      </button>
     </form>
   );
 };
