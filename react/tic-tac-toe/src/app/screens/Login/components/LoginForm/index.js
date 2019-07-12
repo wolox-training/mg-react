@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { func } from 'prop-types';
 
 import customInput from '../Fields';
-import { required, minLength, isMail } from '../Validation';
+import { required, minLength, isMail, validate } from '../Validation';
 
 import styles from './styles.modules.scss';
 
@@ -29,5 +29,6 @@ LoginForm.propTypes = {
 };
 
 export default reduxForm({
-  form: 'login'
+  form: 'login',
+  validate
 })(LoginForm);
