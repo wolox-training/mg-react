@@ -1,4 +1,7 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+
+import singIn from '../../../services/AuthServices';
 
 import LoginForm from './components/LoginForm';
 
