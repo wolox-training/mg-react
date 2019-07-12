@@ -39,7 +39,6 @@
 .custon-input:focus + label,
 .dirty .custon-input + label {
   color: $black;
-  font-size: 12px;
   top: -12px;
 }
 
@@ -52,21 +51,21 @@
   color: $white;
   margin-top: 10px;
   position: relative;
+
+  &::before {
+    border-color: transparent transparent $red transparent;
+    border-style: solid;
+    border-width: 0 8px 8px 7px;
+    content: '';
+    height: 0;
+    left: 20px;
+    position: absolute;
+    top: -8px;
+    width: 0;
+  }
 }
 
-.error-text::before {
-  content: '';
-  border-color: transparent transparent $red transparent;
-  border-style: solid;
-  border-width: 0 8px 8px 7px;
-  height: 0;
-  left: 20px;
-  position: absolute;
-  top: -8px;
-  width: 0;
-}
-
-.async-validating input {
+.async-validating {
   animation-duration: 1.4s;
   animation-iteration-count: infinite;
   animation-name: grey-pulse;
