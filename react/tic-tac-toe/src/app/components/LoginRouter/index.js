@@ -1,17 +1,22 @@
 /* eslint-disable react/jsx-no-bind */
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Game from '../../screens/Game';
 import Login from '../../screens/Login';
 
+import AuthInfo from './components/AuthInfo';
+
 function LoginRouter() {
-  const loggedin = true;
+  const loggedin = false;
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={() => (loggedin ? <Game /> : <Login />)} />
-      </Switch>
+      <Fragment>
+        <AuthInfo />
+        <Switch>
+          <Route path="/" component={() => (loggedin ? <Game /> : <Login />)} />
+        </Switch>
+      </Fragment>
     </Router>
   );
 }
