@@ -3,18 +3,12 @@ import cx from 'classnames';
 
 class customInput extends Component {
   getValidityClassName = meta => {
-    const { active, touched, valid } = meta;
+    const { touched, valid } = meta;
 
-    if (active) {
-      return 'active';
+    if (touched) {
+      return valid ? 'valid' : 'invalid';
     }
-    if (touched && !valid) {
-      return 'invalid';
-    }
-    if (touched && valid) {
-      return 'valid';
-    }
-    return '';
+    return 'active';
   };
 
   render() {
@@ -22,8 +16,8 @@ class customInput extends Component {
     const { dirty, error, touched, active } = meta;
     return (
       <div className={cx('custom-input-container', { dirty }, this.getValidityClassName(meta))}>
-        <input {...input} type={type} className={cx('custon-input')} />
-        <label>{label}</label>
+        <input {...input} type={type} className={cx('custom-input')} />
+        <label className={cx('custom-label')}>{label}</label>
         {error && touched && !active && <div className={cx('feedback-text', 'error-text')}>{error}</div>}
       </div>
     );

@@ -3,12 +3,11 @@ import { Field, reduxForm } from 'redux-form';
 import { func } from 'prop-types';
 
 import customInput from '../Fields';
-import { required, minLength, isMail, validate } from '../Validation';
+import { required, minLength, isMail } from '../Validation';
 
 import './styles.modules.scss';
 
-const LoginForm = props => {
-  const { handleSubmit } = props;
+function LoginForm({ handleSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="login">
       <Field name="email" component={customInput} type="text" label="Mail" validate={[required, isMail]} />
@@ -24,13 +23,12 @@ const LoginForm = props => {
       </button>
     </form>
   );
-};
+}
 
 LoginForm.propTypes = {
   handleSubmit: func.isRequired
 };
 
 export default reduxForm({
-  form: 'login',
-  validate
+  form: 'login'
 })(LoginForm);

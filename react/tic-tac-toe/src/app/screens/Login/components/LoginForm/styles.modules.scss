@@ -13,6 +13,11 @@
   margin: auto;
   max-width: 320px;
   padding: 30px;
+  width: 100%;
+
+  & .invalid {
+    border: none;
+  }
 }
 
 .submit {
@@ -22,12 +27,12 @@
   padding: 10px;
 }
 
-.custon-input {
-  border-radius: 0;
-  border-width: 0;
+.custom-input {
+  border: 0;
+  width: 100%;
 }
 
-.custon-input + label {
+.custom-input + .custom-label {
   color: $grey;
   left: 0;
   pointer-events: none;
@@ -36,14 +41,13 @@
   transition: all 0.2s;
 }
 
-.custon-input:focus + label,
-.dirty .custon-input + label {
-  color: $black;
+.dirty .custom-input + .custom-label {
+  color: $orange;
   top: -12px;
 }
 
-.invalid input {
-  border-color: $orange;
+.invalid .custom-input {
+  border-bottom: 2px solid $orange;
 }
 
 .error-text {
