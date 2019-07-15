@@ -3,11 +3,8 @@ import cx from 'classnames';
 
 class customInput extends Component {
   getValidityClassName = meta => {
-    const { active, touched, valid } = meta;
+    const { touched, valid } = meta;
 
-    if (active) {
-      return 'active';
-    }
     if (touched && !valid) {
       return 'invalid';
     }
