@@ -3,13 +3,13 @@ import { Field, reduxForm } from 'redux-form';
 import { func } from 'prop-types';
 
 import customInput from '../Fields';
-import { required, minLength, isMail } from '../Validation';
+import { required, minLength, isMail, validate } from '../Validation';
 
-import './styles.modules.scss';
+import styles from './styles.module.scss';
 
-function LoginForm({ handleSubmit }) {
+function LoginForm({ handleSubmit, pristine }) {
   return (
-    <form onSubmit={handleSubmit} className="login">
+    <form onSubmit={handleSubmit} className={styles.login}>
       <Field name="email" component={customInput} type="text" label="Mail" validate={[required, isMail]} />
       <Field
         name="password"
@@ -18,7 +18,8 @@ function LoginForm({ handleSubmit }) {
         label="Password"
         validate={[required, minLength]}
       />
-      <button type="submit" className="submit">
+      <div>{validate}</div>
+      <button type="submit" disabled={pristine} className={styles.submit}>
         Login
       </button>
     </form>
@@ -26,7 +27,8 @@ function LoginForm({ handleSubmit }) {
 }
 
 LoginForm.propTypes = {
-  handleSubmit: func.isRequired
+  handleSubmit: func.isRequired,
+  pristine: func.isRequired
 };
 
 export default reduxForm({

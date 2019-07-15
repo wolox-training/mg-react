@@ -1,0 +1,41 @@
+@import '../../../../../scss/colors';
+
+.custom-input-container {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.custom-input {
+  border: 0;
+  border-bottom: 2px solid $black;
+  width: 100%;
+  color: $black;
+}
+
+.custom-label {
+  color: $grey;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: -12px;
+  transition: all 0.2s;
+}
+
+.error-text {
+  background-color: $red;
+  color: $white;
+  margin-top: 10px;
+  position: relative;
+
+  &::before {
+    border-color: transparent transparent $red transparent;
+    border-style: solid;
+    border-width: 0 8px 8px 7px;
+    content: '';
+    height: 0;
+    left: 20px;
+    position: absolute;
+    top: -8px;
+    width: 0;
+  }
+}

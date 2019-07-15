@@ -18,5 +18,5 @@ export const validate = values => {
     errors.password = required(password);
   }
 
-  return { required };
+  return errors;
 };
