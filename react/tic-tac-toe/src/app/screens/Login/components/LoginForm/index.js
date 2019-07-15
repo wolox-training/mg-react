@@ -9,7 +9,11 @@ import styles from './styles.module.scss';
 
 function LoginForm({ handleSubmit, pristine }) {
   return (
+<<<<<<< HEAD
     <form onSubmit={handleSubmit} className={styles.login}>
+=======
+    <form onSubmit={handleSubmit} className="login">
+>>>>>>> code refactoring, Coding submit function in a superior component
       <Field name="email" component={customInput} type="text" label="Mail" validate={[required, isMail]} />
       <Field
         name="password"
