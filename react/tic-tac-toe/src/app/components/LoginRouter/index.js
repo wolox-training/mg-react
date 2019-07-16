@@ -1,30 +1,56 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-no-bind */
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { shape, func } from 'prop-types';
 
 import Game from '../../screens/Game';
-import Login from '../../screens/Login';
-import singIn from '../../../services/AuthServices';
+import actionsCreator from '../../../redux/login/actions';
 
 import AuthInfo from './components/AuthInfo';
+import AuthRoute from './components/AuthRoute';
 
-function LoginRouter() {
-  const loggedin = false;
-  const handleSubmit = async values => {
-    const islogged = await singIn(values);
+class LoginRouter extends Component {
+  handleSubmit = values => {
+    const { login } = this.props;
+    login(values);
   };
 
-  return (
-    <Router>
-      <Fragment>
-        <AuthInfo />
-        <Switch>
-          <Route path="/" component={() => (loggedin ? <Game /> : <Login onSubmit={handleSubmit} />)} />
-        </Switch>
-      </Fragment>
-    </Router>
-  );
+  handleClick = () => {
+    const { logout } = this.props;
+    logout();
+  };
+
+  render() {
+    const { islogged } = this.props;
+    return (
+      <Router>
+        <Fragment>
+          {islogged && <AuthInfo islogged={islogged} onClick={this.handleClick} />}
+          <Switch>
+            <AuthRoute component={Game} onSubmit={this.handleSubmit} islogged={islogged} />
+          </Switch>
+        </Fragment>
+      </Router>
+    );
+  }
 }
 
-export default LoginRouter;
+LoginRouter.propTypes = {
+  login: func.isRequired,
+  logout: func.isRequired,
+  islogged: shape({})
+};
+
+const mapStateToProps = store => ({
+  islogged: store.login.islogged
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: values => dispatch(actionsCreator.login(values)),
+  logout: () => dispatch(actionsCreator.logout())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginRouter);
