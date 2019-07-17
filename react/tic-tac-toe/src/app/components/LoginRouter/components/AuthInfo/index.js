@@ -3,8 +3,8 @@ import { bool, func } from 'prop-types';
 
 import styles from './styles.module.scss';
 
-function AuthInfo({ islogged, onClick }) {
-  return islogged ? (
+function AuthInfo({ isAuth, onClick }) {
+  return isAuth ? (
     <p className={styles.container}>
       Welcome Buddy{' '}
       <button type="button" onClick={onClick} className={styles.button}>
@@ -20,8 +20,8 @@ function AuthInfo({ islogged, onClick }) {
 }
 
 AuthInfo.propTypes = {
-  islogged: bool.isRequired,
-  onClick: func.isRequired
+  isAuth: bool,
+  onClick: func
 };
 
 export default AuthInfo;
