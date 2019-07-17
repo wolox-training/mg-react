@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { shape, func, string } from 'prop-types';
+import { shape, func, bol } from 'prop-types';
 
 import Game from '../../screens/Game';
 import actionsCreator from '../../../redux/login/actions';
@@ -25,9 +25,9 @@ class LoginRouter extends Component {
     return (
       <Router>
         <Fragment>
-          {islogged && <AuthInfo islogged={isAuth} onClick={this.handleClick} />}
+          {islogged && <AuthInfo isAuth={isAuth} onClick={this.handleClick} />}
           <Switch>
-            <AuthRoute component={Game} onSubmit={this.handleSubmit} islogged={isAuth} />
+            <AuthRoute component={Game} onSubmit={this.handleSubmit} isAuth={isAuth} />
           </Switch>
         </Fragment>
       </Router>
@@ -38,7 +38,7 @@ class LoginRouter extends Component {
 LoginRouter.propTypes = {
   login: func.isRequired,
   logout: func.isRequired,
-  isAuth: string,
+  isAuth: bol,
   islogged: shape({})
 };
 
