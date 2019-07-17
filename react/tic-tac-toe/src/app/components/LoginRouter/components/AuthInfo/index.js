@@ -1,17 +1,21 @@
 import React from 'react';
 import { bool, func } from 'prop-types';
 
+import styles from './styles.module.scss';
+
 function AuthInfo({ islogged, onClick }) {
   return islogged ? (
-    <p>
-      Welcome{' '}
-      <button type="button" onClick={onClick}>
+    <p className={styles.container}>
+      Welcome Buddy{' '}
+      <button type="button" onClick={onClick} className={styles.button}>
         {' '}
         Sing Out
       </button>
     </p>
   ) : (
-    <p />
+    <div className={styles.errorContainer}>
+      <p className={styles.error}>Login Failed!</p>
+    </div>
   );
 }
 

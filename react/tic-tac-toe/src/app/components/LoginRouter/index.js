@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { shape, func } from 'prop-types';
+import { shape, func, string } from 'prop-types';
 
 import Game from '../../screens/Game';
 import actionsCreator from '../../../redux/login/actions';
@@ -21,13 +21,13 @@ class LoginRouter extends Component {
   };
 
   render() {
-    const { islogged } = this.props;
+    const { islogged, isAuth } = this.props;
     return (
       <Router>
         <Fragment>
-          {islogged && <AuthInfo islogged={islogged} onClick={this.handleClick} />}
+          {islogged && <AuthInfo islogged={isAuth} onClick={this.handleClick} />}
           <Switch>
-            <AuthRoute component={Game} onSubmit={this.handleSubmit} islogged={islogged} />
+            <AuthRoute component={Game} onSubmit={this.handleSubmit} islogged={isAuth} />
           </Switch>
         </Fragment>
       </Router>
@@ -38,11 +38,13 @@ class LoginRouter extends Component {
 LoginRouter.propTypes = {
   login: func.isRequired,
   logout: func.isRequired,
+  isAuth: string,
   islogged: shape({})
 };
 
 const mapStateToProps = store => ({
-  islogged: store.login.islogged
+  islogged: store.login.islogged,
+  isAuth: store.login.isAuth
 });
 
 const mapDispatchToProps = dispatch => ({
