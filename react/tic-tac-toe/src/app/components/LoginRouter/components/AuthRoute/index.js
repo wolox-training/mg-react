@@ -9,8 +9,8 @@ function AuthRoute({ islogged, onSubmit, component: Component }) {
 }
 
 AuthRoute.propTypes = {
-  islogged: bool.isRequired,
   component: node,
+  islogged: bool,
   onSubmit: func
 };
 

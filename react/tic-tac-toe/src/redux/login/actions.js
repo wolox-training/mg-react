@@ -17,7 +17,8 @@ const actionsCreator = {
       });
     } else {
       dispatch({
-        type: actions.LOGIN_FAILURE
+        type: actions.LOGIN_FAILURE,
+        payload: response
       });
     }
   },

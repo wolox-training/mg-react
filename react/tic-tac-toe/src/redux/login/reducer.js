@@ -4,17 +4,18 @@ import { combineReducers } from 'redux';
 import { actions } from './actions';
 
 const initialState = {
-  islogged: null
+  islogged: null,
+  isAuth: null
 };
 
 function loginReducer(state = initialState, action) {
   switch (action.type) {
     case actions.LOGIN_FAILURE:
-      return { ...state };
+      return { ...state, islogged: action.payload };
     case actions.LOGOUT:
-      return { ...state, islogged: null };
+      return { ...state, islogged: null, isAuth: null };
     case actions.LOGIN_SUCCESS:
-      return { ...state, islogged: action.payload.data };
+      return { ...state, islogged: action.payload, isAuth: true };
     default:
       return state;
   }
