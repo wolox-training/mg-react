@@ -1,11 +1,14 @@
 import { reducer as formReducer } from 'redux-form';
 import { combineReducers } from 'redux';
 
+import { loadState, saveState } from '../../app/components/localStorage';
+
 import { actions } from './actions';
 
 const initialState = {
   islogged: null,
-  isAuth: null
+  isAuth: null,
+  ...loadState()
 };
 
 function loginReducer(state = initialState, action) {
@@ -13,9 +16,12 @@ function loginReducer(state = initialState, action) {
     case actions.LOGIN_FAILURE:
       return { ...state, islogged: action.payload };
     case actions.LOGOUT:
+      saveState({ ...state, islogged: null, isAuth: null });
       return { ...state, islogged: null, isAuth: null };
-    case actions.LOGIN_SUCCESS:
+    case actions.LOGIN_SUCCESS: {
+      saveState({ ...state, islogged: action.payload, isAuth: true });
       return { ...state, islogged: action.payload, isAuth: true };
+    }
     default:
       return state;
   }
