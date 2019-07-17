@@ -8,7 +8,7 @@ function customInput({ label, input, type, meta }) {
     <div className={styles.customInputContainer}>
       <input {...input} type={type} className={styles.customInput} />
       <label className={styles.customLabel}>{label}</label>
-      {error && touched && !active && <div className={styles.errorText}>{error}</div>}
+      {error && touched && !active && <span className={styles.errorText}>{error}</span>}
     </div>
   );
 }
