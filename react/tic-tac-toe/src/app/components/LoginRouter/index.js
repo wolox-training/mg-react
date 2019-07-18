@@ -25,7 +25,7 @@ class LoginRouter extends Component {
     return (
       <Router>
         <Fragment>
-          {islogged && <AuthInfo isAuth={isAuth} onClick={this.handleClick} />}
+          <AuthInfo isAuth={isAuth} islogged={islogged} onClick={this.handleClick} />
           <Switch>
             <AuthRoute component={Game} onSubmit={this.handleSubmit} isAuth={isAuth} />
           </Switch>
