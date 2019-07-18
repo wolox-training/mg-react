@@ -10,7 +10,6 @@
     background-color: $orange;
     border-color: $orange;
   }
-
 }
 
 .container {
@@ -20,7 +19,7 @@
 .error {
   color: orange;
 
-  &Container {
+  &-container {
     display: flex;
     justify-content: center;
   }

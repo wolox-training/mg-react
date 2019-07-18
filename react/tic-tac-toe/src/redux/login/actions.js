@@ -10,17 +10,7 @@ export const actions = {
 const actionsCreator = {
   login: values => async dispatch => {
     const response = await singIn(values);
-    if (response.ok) {
-      dispatch({
-        type: actions.LOGIN_SUCCESS,
-        payload: response
-      });
-    } else {
-      dispatch({
-        type: actions.LOGIN_FAILURE,
-        payload: response
-      });
-    }
+    dispatch({ type: response.ok ? actions.LOGIN_SUCCESS : actions.LOGIN_FAILURE, payload: response });
   },
   logout: () => ({
     type: actions.LOGOUT

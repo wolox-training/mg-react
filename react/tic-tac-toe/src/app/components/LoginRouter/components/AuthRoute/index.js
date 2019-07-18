@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import Login from '../../../../screens/Login';
 
 function AuthRoute({ isAuth, onSubmit, component: Component }) {
-  return isAuth ? <Route path="/" component={Component} /> : <Login onSubmit={onSubmit} />;
+  return isAuth ? <Route path="/game" component={Component} /> : <Login onSubmit={onSubmit} />;
 }
 
 AuthRoute.propTypes = {
