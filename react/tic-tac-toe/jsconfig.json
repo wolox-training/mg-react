@@ -14,7 +14,8 @@
       "~redux/*": ["./src/redux/*"],
       "~services/*": ["./src/services/*"],
       "~utils/*": ["./src/utils/*"],
-      "~assets/*": ["./src/assets/*"]
+      "~assets/*": ["./src/assets/*"],
+      "~scss/*": ["./src/scss"]
     }
   },
   "include": ["src"],

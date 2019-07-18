@@ -1,11 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
-import Game from './screens/Game';
+import store from '../redux/store';
+
+import Login from './screens/Login';
 
 import '../scss/application.scss';
 
 function App() {
-  return <Game />;
+  return (
+    <Provider store={store}>
+      <Login />
+    </Provider>
+  );
 }
 
 export default App;
