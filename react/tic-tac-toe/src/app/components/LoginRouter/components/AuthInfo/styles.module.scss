@@ -1,0 +1,26 @@
+@import '../../../../../scss/colors';
+
+.button {
+  background-color: $grey;
+  border-color: $grey;
+  color: $white;
+  padding: 10px;
+  
+  &:hover {
+    background-color: $orange;
+    border-color: $orange;
+  }
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+.error {
+  color: orange;
+
+  &-container {
+    display: flex;
+    justify-content: center;
+  }
+}
