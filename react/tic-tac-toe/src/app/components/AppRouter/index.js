@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { shape, func, bol } from 'prop-types';
+import { func, bool } from 'prop-types';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Game from '../../screens/Game';
 import actionsCreator from '../../../redux/login/actions';
+import PrivateRoute from '../../../utils/PrivateRoute';
 
-import AuthInfo from './components/AuthInfo';
 import AuthRoute from './components/AuthRoute';
+import AuthInfo from './components/AuthInfo';
 
-class LoginRouter extends Component {
+class AppRouter extends Component {
   handleSubmit = values => {
     const { login } = this.props;
     login(values);
@@ -27,7 +28,8 @@ class LoginRouter extends Component {
         <Fragment>
           <AuthInfo isAuth={isAuth} islogged={islogged} onClick={this.handleClick} />
           <Switch>
-            <AuthRoute component={Game} onSubmit={this.handleSubmit} isAuth={isAuth} />
+            <Route path="/login" component={AuthRoute} />
+            <PrivateRoute path="/game" component={Game} isAuth={isAuth} islogged={islogged} />
           </Switch>
         </Fragment>
       </Router>
@@ -35,11 +37,11 @@ class LoginRouter extends Component {
   }
 }
 
-LoginRouter.propTypes = {
-  login: func.isRequired,
-  logout: func.isRequired,
-  isAuth: bol,
-  islogged: shape({})
+AppRouter.propTypes = {
+  isAuth: bool,
+  islogged: bool,
+  login: func,
+  logout: func
 };
 
 const mapStateToProps = store => ({
@@ -55,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginRouter);
+)(AppRouter);

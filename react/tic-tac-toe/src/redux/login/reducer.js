@@ -5,7 +5,7 @@ import { actions } from './actions';
 
 const initialState = {
   islogged: null,
-  isAuth: null
+  isAuth: false
 };
 
 function loginReducer(state = initialState, action) {

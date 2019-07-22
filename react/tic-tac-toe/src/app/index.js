@@ -3,14 +3,14 @@ import { Provider } from 'react-redux';
 
 import store from '../redux/store';
 
-import LoginRouter from './components/LoginRouter';
+import AppRouter from './components/AppRouter';
 
 import '../scss/application.scss';
 
 function App() {
   return (
     <Provider store={store}>
-      <LoginRouter />
+      <AppRouter />
     </Provider>
   );
 }
