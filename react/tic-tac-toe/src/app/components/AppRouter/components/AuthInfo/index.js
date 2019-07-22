@@ -1,5 +1,6 @@
 import React from 'react';
 import { bool, func } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ } from '../../../../../constants';
 
@@ -8,12 +9,18 @@ import styles from './styles.module.scss';
 function AuthInfo({ isAuth, islogged, onClick }) {
   if (islogged) {
     return isAuth ? (
-      <p className={styles.container}>
+      <ul className={styles.container}>
         {WELCOME_MSJ}
+        <li className={styles.link}>
+          <Link to="/game">Play</Link>
+        </li>
+        <li className={styles.link}>
+          <Link to="/podium">Scores</Link>
+        </li>
         <button type="button" onClick={onClick} className={styles.button}>
           {SINGOUT_MSJ}
         </button>
-      </p>
+      </ul>
     ) : (
       <div className={styles.errorContainer}>
         <p className={styles.error}>{LOGINFAIL_MSJ}</p>

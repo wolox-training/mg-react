@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { func, bool } from 'prop-types';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Game from '../../screens/Game';
+import Podium from '../../screens/Podium';
 import actionsCreator from '../../../redux/login/actions';
 import PrivateRoute from '../../../utils/PrivateRoute';
 
@@ -27,10 +28,10 @@ class AppRouter extends Component {
       <Router>
         <Fragment>
           <AuthInfo isAuth={isAuth} islogged={islogged} onClick={this.handleClick} />
-          <Switch>
-            <Route path="/login" component={AuthRoute} />
-            <PrivateRoute path="/game" component={Game} isAuth={isAuth} islogged={islogged} />
-          </Switch>
+          <PrivateRoute path="/podium" component={Podium} isAuth={isAuth} islogged={islogged} />
+          <PrivateRoute path="/game" component={Game} isAuth={isAuth} islogged={islogged} />
+          <Route path="/login" component={AuthRoute} />
+          <Route exact path="/" component={AuthRoute} />
         </Fragment>
       </Router>
     );
