@@ -1,12 +1,14 @@
-/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { bool } from 'prop-types';
 
-function PrivateRoute({ component: Component, ...rest }) {
-  const isAuthenticated = false;
-  return (
-    <Route {...rest} render={props => (isAuthenticated ? <Component {...props} /> : <Redirect to="/" />)} />
-  );
+function PrivateRoute({ isAuth, islogged, ...rest }) {
+  return islogged && isAuth ? <Route {...rest} /> : <Redirect to="/login" />;
 }
+
+PrivateRoute.propTypes = {
+  isAuth: bool,
+  islogged: bool
+};
 
 export default PrivateRoute;
