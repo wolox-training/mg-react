@@ -7,10 +7,19 @@ export const loadState = () => {
   }
 };
 
+export const removeState = () => {
+  try {
+    localStorage.removeItem('state');
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const saveState = state => {
   try {
     localStorage.setItem('state', JSON.stringify(state));
   } catch (error) {
+    removeState();
     throw error;
   }
 };

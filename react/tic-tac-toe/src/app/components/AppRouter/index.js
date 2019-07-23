@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Game from '../../screens/Game';
 import actionsCreator from '../../../redux/login/actions';
 import PrivateRoute from '../../../utils/PrivateRoute';
+import { loadState } from '../localStorage';
 
 import AuthRoute from './components/AuthRoute';
 import AuthInfo from './components/AuthInfo';
@@ -46,7 +47,8 @@ AppRouter.propTypes = {
 
 const mapStateToProps = store => ({
   islogged: store.login.islogged,
-  isAuth: store.login.isAuth
+  isAuth: store.login.isAuth,
+  ...loadState()
 });
 
 const mapDispatchToProps = dispatch => ({
