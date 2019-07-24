@@ -1,4 +1,4 @@
-const APP_STATE = 'state';
+import { APP_STATE } from '~constants';
 
 export const loadState = () => {
   try {

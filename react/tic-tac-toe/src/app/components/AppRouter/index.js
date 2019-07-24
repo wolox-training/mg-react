@@ -23,17 +23,10 @@ class AppRouter extends Component {
   };
 
   componentDidMount() {
-    const state = loadState();
-    if (state) {
-      const {
-        islogged: {
-          config: { data }
-        }
-      } = state;
-      const { login } = this.props;
-      if (data) {
-        login(data);
-      }
+    const data = loadState();
+    if (data) {
+      const { setauth } = this.props;
+      setauth(data);
     }
   }
 
@@ -57,18 +50,19 @@ AppRouter.propTypes = {
   isAuth: bool,
   islogged: bool,
   login: func,
-  logout: func
+  logout: func,
+  setauth: func
 };
 
 const mapStateToProps = store => ({
   islogged: store.login.islogged,
-  isAuth: store.login.isAuth,
-  ...loadState()
+  isAuth: store.login.isAuth
 });
 
 const mapDispatchToProps = dispatch => ({
   login: values => dispatch(actionsCreator.login(values)),
-  logout: () => dispatch(actionsCreator.logout())
+  logout: () => dispatch(actionsCreator.logout()),
+  setauth: token => dispatch(actionsCreator.setauth(token))
 });
 
 export default connect(

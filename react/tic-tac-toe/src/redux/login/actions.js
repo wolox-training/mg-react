@@ -12,12 +12,13 @@ const actionsCreator = {
   login: values => async dispatch => {
     const response = await singIn(values);
     if (response.ok) {
-      saveState({ islogged: response, isAuth: true });
-      dispatch({ type: actions.LOGIN_SUCCESS, payload: response });
+      dispatch({ type: actions.LOGIN_SUCCESS, payload: response.data });
+      saveState({ islogged: response.data });
     } else {
       dispatch({ type: actions.LOGIN_FAILURE, payload: response });
     }
   },
+  setauth: token => ({ type: actions.LOGIN_SUCCESS, payload: token }),
   logout: () => {
     removeState();
     return {
