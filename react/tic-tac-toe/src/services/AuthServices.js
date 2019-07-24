@@ -1,5 +1,7 @@
 import api from '../config/api';
 
-const singIn = payload => api.post('/login', payload);
+const authService = {
+  singIn: payload => api.post('/login', payload)
+};
 
-export default singIn;
+export default authService;
