@@ -15,7 +15,6 @@ const actionsCreator = {
       saveState({ islogged: response, isAuth: true });
       dispatch({ type: actions.LOGIN_SUCCESS, payload: response });
     } else {
-      saveState({ islogged: response, isAuth: false });
       dispatch({ type: actions.LOGIN_FAILURE, payload: response });
     }
   },

@@ -22,6 +22,21 @@ class AppRouter extends Component {
     logout();
   };
 
+  componentDidMount() {
+    const state = loadState();
+    if (state) {
+      const {
+        islogged: {
+          config: { data }
+        }
+      } = state;
+      const { login } = this.props;
+      if (data) {
+        login(data);
+      }
+    }
+  }
+
   render() {
     const { islogged, isAuth } = this.props;
     return (
