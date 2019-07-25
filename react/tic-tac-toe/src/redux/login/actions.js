@@ -21,7 +21,6 @@ const actionsCreator = {
         saveState({ islogged: response.data });
       }),
       withPostFailure((dispatch, response) => {
-        saveState({ islogged: response, isAuth: false });
         dispatch({ type: actions.LOGIN_FAILURE, payload: response });
       })
     ]
