@@ -43,7 +43,7 @@ class AppRouter extends Component {
           <Switch>
             <PrivateRoute path="/podium" component={Podium} isAuth={isAuth} islogged={islogged} />
             <PrivateRoute path="/game" component={Game} isAuth={isAuth} islogged={islogged} />
-            <Route exact path="/" component={AuthRoute} />
+            <Route path="/" component={AuthRoute} />
           </Switch>
         </Fragment>
       </Router>
