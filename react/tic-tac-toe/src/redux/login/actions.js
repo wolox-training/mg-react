@@ -1,5 +1,6 @@
-import singIn from '../../services/AuthServices';
-import { saveState, removeState } from '../../app/components/localStorage';
+import singIn from '~services/AuthServices';
+
+import { saveState, removeState } from '~services/localStorage';
 
 export const actions = {
   LOGIN: '@@AUTH/LOGIN',

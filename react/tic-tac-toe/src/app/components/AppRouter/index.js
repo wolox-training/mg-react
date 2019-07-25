@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { func, bool } from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Game from '../../screens/Game';
-import actionsCreator from '../../../redux/login/actions';
-import PrivateRoute from '../../../utils/PrivateRoute';
-import { loadState } from '../localStorage';
+import Game from '~screens/Game';
+
+import actionsCreator from '~redux/login/actions';
+
+import PrivateRoute from '~utils/PrivateRoute';
+
+import { loadState } from '~services/localStorage';
 
 import AuthRoute from './components/AuthRoute';
 import AuthInfo from './components/AuthInfo';
@@ -25,8 +28,7 @@ class AppRouter extends Component {
   componentDidMount() {
     const data = loadState();
     if (data) {
-      const { setauth } = this.props;
-      setauth(data);
+      this.props.setauth(data);
     }
   }
 
