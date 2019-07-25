@@ -3,3 +3,5 @@ export const SINGOUT_MSJ = 'Sing out';
 export const LOGINFAIL_MSJ = 'Login failed!';
 export const PLAY_LINK = 'Play';
 export const PODIUM_LINK = 'Scores';
+
+export const APP_STATE = 'state';

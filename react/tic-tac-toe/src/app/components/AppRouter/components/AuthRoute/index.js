@@ -3,8 +3,9 @@ import { func, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Login from '../../../../screens/Login';
-import actionsCreator from '../../../../../redux/login/actions';
+import Login from '~screens/Login';
+
+import actionsCreator from '~redux/login/actions';
 
 class AuthRoute extends Component {
   handleSubmit = values => {

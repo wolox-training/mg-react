@@ -1,8 +1,8 @@
 import { createTypes, completeTypes, withPostFailure, withPostSuccess } from 'redux-recompose';
 
-import AuthService from '~services/AuthServices';
+import { saveState, removeState } from '~services/localStorage';
 
-import { saveState, removeState } from '~components/localStorage';
+import AuthService from '~services/AuthServices';
 
 export const actions = createTypes(completeTypes(['LOGIN'], ['LOGOUT']), '@@AUTH');
 
@@ -16,9 +16,9 @@ const actionsCreator = {
       withPostSuccess((dispatch, response) => {
         dispatch({
           type: actions.LOGIN_SUCCESS,
-          payload: response
+          payload: response.data
         });
-        saveState({ islogged: response, isAuth: true });
+        saveState({ islogged: response.data });
       }),
       withPostFailure((dispatch, response) => {
         saveState({ islogged: response, isAuth: false });
@@ -26,6 +26,7 @@ const actionsCreator = {
       })
     ]
   }),
+  setauth: token => ({ type: actions.LOGIN_SUCCESS, payload: token }),
   logout: () => {
     removeState();
     return {
