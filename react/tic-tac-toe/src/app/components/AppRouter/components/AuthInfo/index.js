@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChessBoard, faGamepad } from '@fortawesome/free-solid-svg-icons';
 
-import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, PODIUM_LINK, PLAY_LINK } from '../../../../../constants';
+import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, PODIUM_LINK, PLAY_LINK } from '~constants';
 
 import styles from './styles.module.scss';
 
