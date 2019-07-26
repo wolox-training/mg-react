@@ -1,6 +1,6 @@
 @import '../../../../../scss/colors';
 
-.button {
+.nav-button {
   background-color: $black;
   color: $white;
   margin: 0 5px;
@@ -11,13 +11,13 @@
   }
 }
 
-.link {
+.nav-link {
   background-color: $black;
   color: $white;
   display: flex;
-  max-width: 80px;
   margin: 0 5px;
-  overflow:auto;
+  max-width: 80px;
+  overflow: auto;
   padding: 10px;
   width: 100%;
 
@@ -26,7 +26,7 @@
   }
 }
 
-.container {
+.navbar {
   align-items: center;
   border-bottom: thick double $grey;
   display: flex;
