@@ -1,5 +1,9 @@
-
 .container {
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
 }
