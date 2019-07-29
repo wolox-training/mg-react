@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { bool } from 'prop-types';
 
 function PrivateRoute({ isAuth, islogged, ...rest }) {
-  return islogged && isAuth ? <Route {...rest} /> : <Redirect to="/login" />;
+  return islogged && isAuth ? <Route {...rest} /> : <Redirect to="/" />;
 }
 
 PrivateRoute.propTypes = {
