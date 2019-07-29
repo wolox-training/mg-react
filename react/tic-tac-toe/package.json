@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/react-fontawesome": "^0.1.4",
     "@redux-beacon/google-analytics": "^1.1.1",
     "apisauce": "^1.0.0",
     "babel-plugin-module-resolver": "^3.1.1",

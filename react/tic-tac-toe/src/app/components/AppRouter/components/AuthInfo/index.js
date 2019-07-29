@@ -2,7 +2,7 @@ import React from 'react';
 import { bool, func } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, PODIUM_LINK, PLAY_LINK } from '~constants';
+import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, routes } from '~constants';
 
 import styles from './styles.module.scss';
 
@@ -11,17 +11,17 @@ function AuthInfo({ isAuth, islogged, onClick }) {
     return isAuth ? (
       <nav className={styles.navbar}>
         {WELCOME_MSJ}
-        <Link className={styles.navLink} to="/game">
+        <Link className={styles.navLink} to={routes.GAME}>
           <span role="img" aria-label="controller">
             🎮
           </span>
-          {PLAY_LINK}
+          {routes.GAME_LABEL}
         </Link>
-        <Link className={styles.navLink} to="/podium">
+        <Link className={styles.navLink} to={routes.PODIUM}>
           <span role="img" aria-label="badge">
             🎖
           </span>
-          {PODIUM_LINK}
+          {routes.PODIUM_LABEL}
         </Link>
         <button type="button" onClick={onClick} className={styles.navButton}>
           {SINGOUT_MSJ}
