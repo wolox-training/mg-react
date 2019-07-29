@@ -14,24 +14,18 @@ class AuthRoute extends Component {
   };
 
   render() {
-    const { islogged, isAuth } = this.props;
-    return islogged && isAuth ? (
-      <Redirect from="/login" to="/game" />
-    ) : (
-      <Login onSubmit={this.handleSubmit} />
-    );
+    const { islogged } = this.props;
+    return islogged ? <Redirect from="/login" to="/game" /> : <Login onSubmit={this.handleSubmit} />;
   }
 }
 
 AuthRoute.propTypes = {
-  isAuth: bool,
   islogged: bool,
   login: func
 };
 
 const mapStateToProps = store => ({
-  islogged: store.login.islogged,
-  isAuth: store.login.isAuth
+  islogged: store.auth.islogin
 });
 
 const mapDispatchToProps = dispatch => ({

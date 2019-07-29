@@ -1,31 +1,26 @@
-import { createTypes, completeTypes, withPostFailure, withPostSuccess } from 'redux-recompose';
+import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
 
 import AuthService from '~services/AuthServices';
 
 import { saveState, removeState } from '~services/localStorage';
 
-export const actions = createTypes(completeTypes(['LOGIN'], ['LOGOUT']), '@@AUTH');
+export const actions = createTypes(completeTypes(['LOGIN'], ['LOGOUT', 'SET_TOKEN']), '@@AUTH');
 
 const actionsCreator = {
   login: values => ({
     type: actions.LOGIN,
-    target: 'login',
+    target: 'islogin',
     service: AuthService.singIn,
     payload: values,
+    successSelector: response => response && response.data && true,
     injections: [
       withPostSuccess((dispatch, response) => {
-        dispatch({
-          type: actions.LOGIN_SUCCESS,
-          payload: response.data
-        });
-        saveState({ islogged: response.data });
-      }),
-      withPostFailure((dispatch, response) => {
-        dispatch({ type: actions.LOGIN_FAILURE, payload: response });
+        dispatch(actionsCreator.setToken(response.data));
+        saveState(response.data);
       })
     ]
   }),
-  setauth: token => ({ type: actions.LOGIN_SUCCESS, payload: token }),
+  setToken: ({ token }) => ({ type: actions.SET_TOKEN, payload: token, target: 'token' }),
   logout: () => {
     removeState();
     return {
