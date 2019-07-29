@@ -2,7 +2,7 @@ import { createTypes, completeTypes, withPostFailure, withPostSuccess } from 're
 
 import AuthService from '~services/AuthServices';
 
-import { saveState, removeState } from '~components/localStorage';
+import { saveState, removeState } from '~services/localStorage';
 
 export const actions = createTypes(completeTypes(['LOGIN'], ['LOGOUT']), '@@AUTH');
 
@@ -16,15 +16,16 @@ const actionsCreator = {
       withPostSuccess((dispatch, response) => {
         dispatch({
           type: actions.LOGIN_SUCCESS,
-          payload: response
+          payload: response.data
         });
-        saveState({ islogged: response, isAuth: true });
+        saveState({ islogged: response.data });
       }),
       withPostFailure((dispatch, response) => {
         dispatch({ type: actions.LOGIN_FAILURE, payload: response });
       })
     ]
   }),
+  setauth: token => ({ type: actions.LOGIN_SUCCESS, payload: token }),
   logout: () => {
     removeState();
     return {
