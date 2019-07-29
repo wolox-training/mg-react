@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Spinner from 'react-spinkit';
 import { connect } from 'react-redux';
 import { func, bool, string } from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -37,8 +38,10 @@ class AppRouter extends Component {
   }
 
   render() {
-    const { onError, isAuth } = this.props;
-    return (
+    const { onError, isAuth, onLoading } = this.props;
+    return onLoading ? (
+      <Spinner name="ball-scale-ripple" color="green" />
+    ) : (
       <Router>
         <Fragment>
           <AuthInfo isAuth={isAuth} onError={onError} onClick={this.handleClick} />
@@ -58,12 +61,14 @@ AppRouter.propTypes = {
   login: func,
   logout: func,
   setAuth: func,
-  onError: string
+  onError: string,
+  onLoading: bool
 };
 
 const mapStateToProps = store => ({
   onError: store.auth.isloginError,
-  isAuth: store.auth.islogin
+  isAuth: store.auth.islogin,
+  onLoading: store.auth.isloginLoading
 });
 
 const mapDispatchToProps = dispatch => ({
