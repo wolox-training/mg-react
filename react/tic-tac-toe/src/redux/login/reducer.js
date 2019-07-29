@@ -1,16 +1,20 @@
-import { createReducer } from 'redux-recompose';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
 import { actions } from './actions';
 
-const initialState = {
-  isLoggedIn: null,
-  isAuth: null
+const initialStateDescription = {
+  islogin: null,
+  token: null
 };
+
+const initialState = completeState(initialStateDescription, ['token']);
 
 const reducerDescription = {
-  [actions.LOGIN_FAILURE]: (state, action) => ({ ...state, islogged: action.payload }),
-  [actions.LOGOUT]: state => ({ ...state, islogged: null, isAuth: null }),
-  [actions.LOGIN_SUCCESS]: (state, action) => ({ ...state, islogged: action.payload, isAuth: true })
+  primaryActions: [actions.LOGIN],
+  override: {
+    [actions.SET_TOKEN]: (state, action) => ({ ...state, [action.target]: action.payload, islogin: true }),
+    [actions.LOGOUT]: state => ({ ...state, islogin: false, token: null })
+  }
 };
 
-export default createReducer(initialState, reducerDescription);
+export default createReducer(initialState, completeReducer(reducerDescription));

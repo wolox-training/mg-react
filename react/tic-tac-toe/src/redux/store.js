@@ -3,11 +3,11 @@ import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import { fetchMiddleware } from 'redux-recompose';
 
-import login from './login/reducer';
+import auth from './login/reducer';
 
 const reducers = combineReducers({
   form: formReducer,
-  login
+  auth
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle
