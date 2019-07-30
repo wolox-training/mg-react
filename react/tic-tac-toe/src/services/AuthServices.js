@@ -1,6 +1,6 @@
 import api from '../config/api';
 
-const authService = {
+export const authService = {
   singIn: payload => api.post('/login', payload)
 };
 

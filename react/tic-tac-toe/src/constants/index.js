@@ -12,4 +12,7 @@ export const routes = {
   PODIUM_LABEL: 'Scores'
 };
 
+export const PLAYER_ONE = 'player_one';
+export const PLAYER_TWO = 'player_two';
+
 export const APP_STATE = 'state';

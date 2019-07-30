@@ -1,9 +1,12 @@
 import api from '../config/api';
 
-const getMatches = () =>
-  api
-    .get('/matches')
-    .then(response => response.data)
-    .catch(error => error);
+const MatchesServices = {
+  getMatches: () =>
+    api
+      .get('/matches')
+      .then(response => response.data)
+      .catch(error => error),
+  postMatch: data => api.post('/matches', data)
+};
 
-export default getMatches;
+export default MatchesServices;
