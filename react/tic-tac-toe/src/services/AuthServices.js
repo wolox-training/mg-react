@@ -1,7 +1,8 @@
 import api from '../config/api';
 
-const authService = {
-  singIn: payload => api.post('/login', payload)
+export const authService = {
+  singIn: payload => api.post('/login', payload),
+  saveToken: ({ token }) => api.setHeader({ Autorization: token })
 };
 
 export default authService;

@@ -1,6 +1,6 @@
 import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
 
-import AuthService from '~services/AuthServices';
+import authService from '~services/AuthServices';
 
 import { saveState, removeState } from '~services/localStorage';
 
@@ -10,13 +10,14 @@ const actionsCreator = {
   login: values => ({
     type: actions.LOGIN,
     target: 'islogin',
-    service: AuthService.singIn,
+    service: authService.singIn,
     payload: values,
     successSelector: response => response && response.data && true,
     injections: [
       withPostSuccess((dispatch, response) => {
         dispatch(actionsCreator.setToken(response.data));
         saveState(response.data);
+        authService.saveToken(response.data);
       })
     ]
   }),
