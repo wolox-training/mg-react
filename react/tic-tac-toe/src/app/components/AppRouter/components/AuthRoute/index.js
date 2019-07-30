@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom';
 
 import Login from '~screens/Login';
 
+import { routes } from '~constants';
+
 import actionsCreator from '~redux/login/actions';
 
 class AuthRoute extends Component {
@@ -15,7 +17,11 @@ class AuthRoute extends Component {
 
   render() {
     const { islogged } = this.props;
-    return islogged ? <Redirect from="/login" to="/game" /> : <Login onSubmit={this.handleSubmit} />;
+    return islogged ? (
+      <Redirect from={routes.LOGIN} to={routes.GAME} />
+    ) : (
+      <Login onSubmit={this.handleSubmit} />
+    );
   }
 }
 

@@ -5,6 +5,7 @@ export const PLAY_LINK = 'Play';
 export const PODIUM_LINK = 'Scores';
 
 export const routes = {
+  LOGIN: '/login',
   GAME: '/game',
   GAME_LABEL: 'Play',
   PODIUM: '/podium',
