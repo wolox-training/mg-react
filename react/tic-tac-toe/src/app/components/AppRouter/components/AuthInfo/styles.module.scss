@@ -20,6 +20,8 @@
 
 .nav-link {
   background-color: $black;
+  border-radius: 2px;
+  box-shadow: 0 5px 6px $dust-gray;
   color: $white;
   display: flex;
   margin: 0 5px;
@@ -34,11 +36,11 @@
   }
 
   &:active {
-    box-shadow: inset 5px 5px $dust-gray;
+    box-shadow: 0 1px 1px $dust-gray;
   }
 
   &:focus {
-    box-shadow: inset 5px 5px $dust-gray;
+    box-shadow: 0 1px 1px $dust-gray;
     color: $white;
   }
 }
@@ -50,12 +52,43 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
-  padding:10px 0;
+  padding: 10px 0;
   text-decoration: none;
+}
+
+.nav-title {
+  background-color: $black;
+  box-shadow: 0 12px 24px $black;
+  color: $white;
+  position: relative;
+
+  &::before {
+    border-bottom: 30px solid $black;
+    border-left: 1px solid transparent;
+    border-right: 10px solid transparent;
+    bottom: 4px;
+    content: '';
+    margin: 0 0 10px 0;
+    position: absolute;
+    width: 91px;
+  }
+
+  &::after {
+    border-top: 30px solid $black;
+    border-left: 1px solid transparent;
+    border-right: 10px solid transparent;
+    content: '';
+    margin: 0 0 10px 0;
+    position: absolute;
+    right: 0px;
+    top: 13px;
+    width: 91px;
+  }
 }
 
 .error {
   background-color: $orange;
+  border-radius: 2px;
   color: $white;
   margin-bottom: 10px;
   padding: 5px 100px;
