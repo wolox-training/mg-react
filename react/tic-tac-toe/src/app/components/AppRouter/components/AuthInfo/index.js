@@ -13,8 +13,7 @@ function AuthInfo({ isAuth, onError, onClick }) {
         <p className={styles.error}>{LOGINFAIL_MSJ}</p>
       </div>
     );
-  }
-  if (isAuth) {
+  } else if (isAuth) {
     return (
       <nav className={styles.navbar}>
         {WELCOME_MSJ}

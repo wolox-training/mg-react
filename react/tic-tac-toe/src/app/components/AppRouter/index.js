@@ -54,10 +54,10 @@ class AppRouter extends Component {
 }
 
 AppRouter.propTypes = {
+  login: func.isRequired,
+  logout: func.isRequired,
+  setAuth: func.isRequired,
   isAuth: bool,
-  login: func,
-  logout: func,
-  setAuth: func,
   onError: string
 };
 
