@@ -7,13 +7,7 @@ import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, routes } from '~constants';
 import styles from './styles.module.scss';
 
 function AuthInfo({ isAuth, onError, onClick }) {
-  if (onError) {
-    return (
-      <div className={styles.errorContainer}>
-        <p className={styles.error}>{LOGINFAIL_MSJ}</p>
-      </div>
-    );
-  } else if (isAuth) {
+  if (isAuth) {
     return (
       <nav className={styles.navbar}>
         {WELCOME_MSJ}
@@ -33,6 +27,12 @@ function AuthInfo({ isAuth, onError, onClick }) {
           {SINGOUT_MSJ}
         </button>
       </nav>
+    );
+  } else if (onError) {
+    return (
+      <div className={styles.errorContainer}>
+        <p className={styles.error}>{LOGINFAIL_MSJ}</p>
+      </div>
     );
   }
   return false;
