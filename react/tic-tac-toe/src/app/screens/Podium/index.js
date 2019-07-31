@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Spinner from 'react-spinkit';
 
-import getMatches from '../../../../../services/MatchesService';
+import MatchesService from '~services/MatchesService';
 
 import styles from './styles.module.scss';
 
-class Matches extends Component {
+class Podium extends Component {
   state = {
     matches: null,
     loading: true
   };
 
   loadMatches = async () => {
-    const matches = await getMatches();
+    const matches = await MatchesService.getMatches();
     this.setState({ loading: false, matches });
   };
 
@@ -23,7 +23,7 @@ class Matches extends Component {
   render() {
     const { matches, loading } = this.state;
     return (
-      <Fragment>
+      <div className={styles.container}>
         {loading ? (
           <Spinner name="ball-scale-ripple" color="green" />
         ) : (
@@ -44,9 +44,9 @@ class Matches extends Component {
             ))}
           </ul>
         )}
-      </Fragment>
+      </div>
     );
   }
 }
 
-export default Matches;
+export default Podium;

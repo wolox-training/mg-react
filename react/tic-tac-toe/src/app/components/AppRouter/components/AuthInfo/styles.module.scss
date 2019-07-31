@@ -1,0 +1,46 @@
+@import './src/scss/colors';
+
+.nav-button {
+  background-color: $black;
+  color: $white;
+  margin: 0 5px;
+  padding: 10px;
+  
+  &:hover {
+    background-color: $orange;
+  }
+}
+
+.nav-link {
+  background-color: $black;
+  color: $white;
+  display: flex;
+  margin: 0 5px;
+  max-width: 80px;
+  padding: 10px;
+  width: 100%;
+
+  &:hover {
+    background-color: $green;
+  }
+}
+
+.navbar {
+  align-items: center;
+  border-bottom: thick double $grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+}
+
+.error {
+  color: orange;
+
+  &-container {
+    display: flex;
+    justify-content: center;
+  }
+}

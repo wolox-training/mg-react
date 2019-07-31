@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { func } from 'prop-types';
+import { func, bool } from 'prop-types';
 
 import customInput from '../Fields';
 import { required, minLength, isMail } from '../Validation';
@@ -27,7 +27,7 @@ function LoginForm({ handleSubmit, pristine }) {
 
 LoginForm.propTypes = {
   handleSubmit: func.isRequired,
-  pristine: func.isRequired
+  pristine: bool
 };
 
 export default reduxForm({
