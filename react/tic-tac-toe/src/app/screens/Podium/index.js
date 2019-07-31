@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
+import { func, bool, arrayOf, string, shape, number } from 'prop-types';
 
-import MatchesService from '~services/MatchesService';
+import { PLAYER_ONE, PLAYER_TWO } from '~constants/';
+
+import matchesActions from '~redux/matches/actions';
 
 import styles from './styles.module.scss';
 
 class Podium extends Component {
-  state = {
-    matches: null,
-    loading: true
-  };
-
-  loadMatches = async () => {
-    const matches = await MatchesService.getMatches();
-    this.setState({ loading: false, matches });
-  };
-
   componentDidMount() {
-    this.loadMatches();
+    const { getMatches } = this.props;
+    getMatches();
   }
 
   render() {
-    const { matches, loading } = this.state;
+    const { matches, loading } = this.props;
     return (
       <div className={styles.container}>
-        {loading ? (
+        {loading && !matches ? (
           <Spinner name="ball-scale-ripple" color="green" />
         ) : (
           <ul className={styles.matches}>
@@ -49,4 +44,30 @@ class Podium extends Component {
   }
 }
 
-export default Podium;
+Podium.propTypes = {
+  getMatches: func,
+  loading: bool,
+  matches: arrayOf(
+    shape({
+      [PLAYER_ONE]: string,
+      [PLAYER_TWO]: string,
+      winner: string,
+      createdAt: string,
+      id: number
+    })
+  )
+};
+
+const mapStateToProps = store => ({
+  matches: store.matches.matches,
+  loading: store.matches.matchesLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(matchesActions.matches())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Podium);

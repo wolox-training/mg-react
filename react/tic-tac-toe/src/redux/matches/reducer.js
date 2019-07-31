@@ -3,7 +3,7 @@ import { createReducer, completeReducer, completeState } from 'redux-recompose';
 import { actions } from './actions';
 
 const initialStateDescription = {
-  data: null
+  matches: []
 };
 
 const initialState = completeState(initialStateDescription);

@@ -1,11 +1,7 @@
 import api from '../config/api';
 
 const MatchesServices = {
-  getMatches: () =>
-    api
-      .get('/matches')
-      .then(response => response.data)
-      .catch(error => error),
+  getMatches: () => api.get('/matches'),
   postMatch: data => api.post('/matches', data)
 };
 
