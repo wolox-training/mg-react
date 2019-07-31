@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { func, bool } from 'prop-types';
+import { func, bool, string } from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { routes } from '~constants';
@@ -32,19 +32,19 @@ class AppRouter extends Component {
   componentDidMount() {
     const data = loadState();
     if (data) {
-      this.props.setauth(data);
+      this.props.setAuth(data);
     }
   }
 
   render() {
-    const { islogged, isAuth } = this.props;
+    const { onError, isAuth } = this.props;
     return (
       <Router>
         <Fragment>
-          <AuthInfo isAuth={isAuth} islogged={islogged} onClick={this.handleClick} />
+          <AuthInfo isAuth={isAuth} onError={onError} onClick={this.handleClick} />
           <Switch>
-            <PrivateRoute path={routes.PODIUM} component={Podium} isAuth={isAuth} islogged={islogged} />
-            <PrivateRoute path={routes.GAME} component={Game} isAuth={isAuth} islogged={islogged} />
+            <PrivateRoute path={routes.PODIUM} component={Podium} isAuth={isAuth} />
+            <PrivateRoute path={routes.GAME} component={Game} isAuth={isAuth} />
             <Route path="/" component={AuthRoute} />
           </Switch>
         </Fragment>
@@ -54,22 +54,22 @@ class AppRouter extends Component {
 }
 
 AppRouter.propTypes = {
+  login: func.isRequired,
+  logout: func.isRequired,
+  setAuth: func.isRequired,
   isAuth: bool,
-  islogged: bool,
-  login: func,
-  logout: func,
-  setauth: func
+  onError: string
 };
 
 const mapStateToProps = store => ({
-  islogged: store.login.islogged,
-  isAuth: store.login.isAuth
+  onError: store.auth.isloginError,
+  isAuth: store.auth.islogin
 });
 
 const mapDispatchToProps = dispatch => ({
   login: values => dispatch(actionsCreator.login(values)),
   logout: () => dispatch(actionsCreator.logout()),
-  setauth: token => dispatch(actionsCreator.setauth(token))
+  setAuth: token => dispatch(actionsCreator.setToken(token))
 });
 
 export default connect(

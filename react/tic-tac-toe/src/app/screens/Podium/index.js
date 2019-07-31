@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from 'react-spinkit';
 
-import getMatches from '~services/MatchesService';
+import MatchesService from '~services/MatchesService';
 
 import styles from './styles.module.scss';
 
@@ -12,7 +12,7 @@ class Podium extends Component {
   };
 
   loadMatches = async () => {
-    const matches = await getMatches();
+    const matches = await MatchesService.getMatches();
     this.setState({ loading: false, matches });
   };
 

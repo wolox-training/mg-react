@@ -1,14 +1,14 @@
 import React from 'react';
-import { bool, func } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { WELCOME_MSJ, SINGOUT_MSJ, LOGINFAIL_MSJ, routes } from '~constants';
 
 import styles from './styles.module.scss';
 
-function AuthInfo({ isAuth, islogged, onClick }) {
-  if (islogged) {
-    return isAuth ? (
+function AuthInfo({ isAuth, onError, onClick }) {
+  if (isAuth) {
+    return (
       <nav className={styles.navbar}>
         {WELCOME_MSJ}
         <Link className={styles.navLink} to={routes.GAME}>
@@ -27,7 +27,9 @@ function AuthInfo({ isAuth, islogged, onClick }) {
           {SINGOUT_MSJ}
         </button>
       </nav>
-    ) : (
+    );
+  } else if (onError) {
+    return (
       <div className={styles.errorContainer}>
         <p className={styles.error}>{LOGINFAIL_MSJ}</p>
       </div>
@@ -38,8 +40,8 @@ function AuthInfo({ isAuth, islogged, onClick }) {
 
 AuthInfo.propTypes = {
   isAuth: bool,
-  islogged: bool,
-  onClick: func
+  onClick: func,
+  onError: string
 };
 
 export default AuthInfo;

@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom';
 
 import Login from '~screens/Login';
 
+import { routes } from '~constants';
+
 import actionsCreator from '~redux/login/actions';
 
 class AuthRoute extends Component {
@@ -14,9 +16,9 @@ class AuthRoute extends Component {
   };
 
   render() {
-    const { islogged, isAuth } = this.props;
-    return islogged && isAuth ? (
-      <Redirect from="/login" to="/game" />
+    const { islogged } = this.props;
+    return islogged ? (
+      <Redirect from={routes.LOGIN} to={routes.GAME} />
     ) : (
       <Login onSubmit={this.handleSubmit} />
     );
@@ -24,14 +26,12 @@ class AuthRoute extends Component {
 }
 
 AuthRoute.propTypes = {
-  isAuth: bool,
   islogged: bool,
   login: func
 };
 
 const mapStateToProps = store => ({
-  islogged: store.login.islogged,
-  isAuth: store.login.isAuth
+  islogged: store.auth.islogin
 });
 
 const mapDispatchToProps = dispatch => ({

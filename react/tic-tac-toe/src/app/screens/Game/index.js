@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import MatchesService from '~services/MatchesService';
+
+import { PLAYER_ONE, PLAYER_TWO } from '~constants/';
+
 import Board from './components/Board';
 import Moves from './components/Moves';
 import styles from './styles.module.scss';
@@ -17,14 +21,13 @@ class Game extends Component {
 
   calculateWinner = squares => {
     const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-
-    lines.forEach(line => {
-      const [a, b, c] = line;
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
-      return null;
-    });
+    }
+    return null;
   };
 
   handleClick = id => {
@@ -36,7 +39,6 @@ class Game extends Component {
     if (this.calculateWinner(squares) || squares[id]) {
       return;
     }
-
     squares[id] = xIsNext ? 'X' : 'O';
     this.setState({
       history: historyPoint.concat([{ squares }]),
@@ -46,6 +48,13 @@ class Game extends Component {
   };
 
   handleMove = move => this.setState({ stepNumber: move, xIsNext: move % 2 === 0 });
+
+  postToPodium = winner =>
+    MatchesService.postMatch({
+      [PLAYER_ONE]: 'X',
+      [PLAYER_TWO]: 'O',
+      winner
+    });
 
   render() {
     const { history, stepNumber, xIsNext } = this.state;
@@ -64,6 +73,7 @@ class Game extends Component {
 
     if (winner) {
       status = `Winner: ${winner}`;
+      this.postToPodium(winner);
     } else {
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }

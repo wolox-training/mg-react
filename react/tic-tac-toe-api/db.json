@@ -41,6 +41,13 @@
       "winner": "tie",
       "createdAt": "2018-10-09T20:46:10.506Z",
       "id": 6
+    },
+    {
+      "player_one": "X",
+      "player_two": "O",
+      "winner": "O",
+      "createdAt": "2019-07-30T22:19:40.712Z",
+      "id": 7
     }
   ],
   "users": [
