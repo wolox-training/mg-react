@@ -69,12 +69,12 @@ class Game extends Component {
 }
 
 Game.propTypes = {
+  onClick: func.isRequired,
+  onMove: func.isRequired,
   history: arrayOf(string),
   postWinner: func,
   stepNumber: number,
-  xIsNext: bool,
-  onClick: func,
-  onMove: func
+  xIsNext: bool
 };
 
 const mapStateToProps = store => ({
