@@ -63,8 +63,7 @@ AppRouter.propTypes = {
 
 const mapStateToProps = store => ({
   onError: store.auth.isloginError,
-  isAuth: store.auth.islogin,
-  onLoading: store.auth.isloginLoading
+  isAuth: store.auth.islogin
 });
 
 const mapDispatchToProps = dispatch => ({
