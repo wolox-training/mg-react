@@ -3,6 +3,8 @@ import { func, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import whileLoading from '~components/hocs';
+
 import Login from '~screens/Login';
 
 import { routes } from '~constants';
@@ -31,7 +33,8 @@ AuthRoute.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  islogged: store.auth.islogin
+  islogged: store.auth.islogin,
+  onLoading: store.auth.isloginLoading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AuthRoute);
+)(whileLoading(AuthRoute));

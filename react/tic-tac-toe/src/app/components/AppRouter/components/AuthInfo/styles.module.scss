@@ -1,5 +1,15 @@
 @import './src/scss/colors';
 
+%title-spoiler {
+  border-bottom: 30px solid $black;
+  border-left: 2px solid transparent;
+  border-right: 10px solid transparent;
+  content: '';
+  margin-bottom: 10px;
+  position: absolute;
+  width: 80px;
+}
+
 .nav-button {
   background-color: $black;
   box-shadow: 0 5px 6px $dust-gray;
@@ -27,19 +37,19 @@
   margin: 0 5px;
   max-width: 80px;
   padding: 10px;
-  width: 100%;
   transition-duration: 0.4s;
-
+  width: 100%;
+  
   &:hover {
     background-color: $green;
   }
 
   &:active {
-    box-shadow: 0 1px 1px $dust-gray;
+    box-shadow: 0 2px 2px $dust-gray;
   }
 
   &:focus {
-    box-shadow: 0 1px 1px $dust-gray;
+    box-shadow: 0 2px 2px $dust-gray;
     color: $white;
   }
 }
@@ -59,29 +69,22 @@
   background-color: $black;
   box-shadow: 0 12px 24px $black;
   color: $white;
+  max-width: 92px;
   position: relative;
+  width: 100%;
 
   &::before {
-    border-bottom: 30px solid $black;
-    border-left: 1px solid transparent;
-    border-right: 10px solid transparent;
-    bottom: 4px;
-    content: '';
-    margin: 0 0 10px 0;
-    position: absolute;
-    width: 91px;
+    @extend %title-spoiler;
+    
+    bottom: 18px;
   }
 
   &::after {
-    border-top: 30px solid $black;
-    border-left: 1px solid transparent;
-    border-right: 10px solid transparent;
-    content: '';
-    margin: 0 0 10px 0;
-    position: absolute;
+    @extend %title-spoiler;
+    
     right: 0px;
-    top: 13px;
-    width: 91px;
+    transform: rotate(180deg);
+    top: 28px;
   }
 }
 
@@ -90,7 +93,7 @@
   border-radius: 2px;
   color: $white;
   margin-bottom: 10px;
-  padding: 5px 100px;
+  padding: 4px 100px;
   position: relative;
 
   &::before {
@@ -99,11 +102,9 @@
     border-width: 0 8px 8px 0;
     bottom: -8px;
     content: '';
-    height: 0;
     left: 20px;
     position: absolute;
     transform: rotate(0.5turn);
-    width: 0;
   }
 
   &-container {

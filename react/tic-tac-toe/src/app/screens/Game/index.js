@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { func, bool, string, arrayOf, number } from 'prop-types';
+import { func } from 'prop-types';
 
 import GameActions from '~redux/game/actions';
 
@@ -13,15 +13,34 @@ import Moves from './components/Moves';
 import styles from './styles.module.scss';
 
 class Game extends Component {
-  handleClick = id => {
-    const { onClick, history, stepNumber, xIsNext } = this.props;
-    onClick(id, history, stepNumber, xIsNext);
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    xIsNext: true,
+    stepNumber: 0
   };
 
-  handleMove = move => {
-    const { onMove } = this.props;
-    onMove(move);
+  handleClick = id => {
+    const { history, stepNumber, xIsNext } = this.state;
+    const historyPoint = history.slice(0, stepNumber + 1);
+    const current = historyPoint[historyPoint.length - 1];
+    const squares = current.squares.slice();
+
+    if (calculateWinner(squares) || squares[id]) {
+      return;
+    }
+    squares[id] = xIsNext ? 'X' : 'O';
+    this.setState({
+      history: historyPoint.concat([{ squares }]),
+      xIsNext: !xIsNext,
+      stepNumber: historyPoint.length
+    });
   };
+
+  handleMove = move => this.setState({ stepNumber: move, xIsNext: move % 2 === 0 });
 
   postToPodium = winner => {
     const { postWinner } = this.props;
@@ -33,7 +52,7 @@ class Game extends Component {
   };
 
   render() {
-    const { history, stepNumber, xIsNext } = this.props;
+    const { history, stepNumber, xIsNext } = this.state;
     const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
     let status = null;
@@ -69,27 +88,14 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  onClick: func.isRequired,
-  onMove: func.isRequired,
-  history: arrayOf(string),
-  postWinner: func,
-  stepNumber: number,
-  xIsNext: bool
+  postWinner: func
 };
 
-const mapStateToProps = store => ({
-  history: store.game.history,
-  xIsNext: store.game.xIsNext,
-  stepNumber: store.game.stepNumber
-});
-
 const mapDispatchToProps = dispatch => ({
-  postWinner: values => dispatch(GameActions.winner(values)),
-  onClick: (id, history, stepNumber, xIsNext) =>
-    dispatch(GameActions.onClick(id, history, stepNumber, xIsNext))
+  postWinner: values => dispatch(GameActions.winner(values))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Game);

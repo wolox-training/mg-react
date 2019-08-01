@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Spinner from 'react-spinkit';
-import { func, bool, arrayOf, string, shape, number } from 'prop-types';
+import { bool, func, arrayOf, string, shape, number } from 'prop-types';
 
 import { PLAYER_ONE, PLAYER_TWO } from '~constants/';
 
 import matchesActions from '~redux/matches/actions';
 
-import styles from './styles.module.scss';
+import Layout from './layout';
 
 class Podium extends Component {
   componentDidMount() {
@@ -16,37 +15,13 @@ class Podium extends Component {
   }
 
   render() {
-    const { matches, loading } = this.props;
-    return (
-      <div className={styles.container}>
-        {loading && !matches ? (
-          <Spinner name="ball-scale-ripple" color="green" />
-        ) : (
-          <ul className={styles.matches}>
-            <li>
-              <span role="img" aria-label="coup">
-                🏆
-              </span>
-              <h1>Podium</h1>
-              <span role="img" aria-label="coup">
-                🏆
-              </span>
-            </li>
-            {matches.map(({ createdAt, player_one: playerOne, player_two: playerTwo, winner }) => (
-              <li key={createdAt}>
-                {playerOne} v {playerTwo}: {winner}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
+    const { matches, onLoading } = this.props;
+    return <Layout matches={matches} onLoading={onLoading} />;
   }
 }
 
 Podium.propTypes = {
   getMatches: func,
-  loading: bool,
   matches: arrayOf(
     shape({
       [PLAYER_ONE]: string,
@@ -55,12 +30,13 @@ Podium.propTypes = {
       createdAt: string,
       id: number
     })
-  )
+  ),
+  onLoading: bool
 };
 
 const mapStateToProps = store => ({
   matches: store.matches.matches,
-  loading: store.matches.matchesLoading
+  onLoading: store.matches.matchesLoading
 });
 
 const mapDispatchToProps = dispatch => ({

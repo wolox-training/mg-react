@@ -48,6 +48,34 @@
       "winner": "O",
       "createdAt": "2019-07-30T22:19:40.712Z",
       "id": 7
+    },
+    {
+      "player_one": "X",
+      "player_two": "O",
+      "winner": "X",
+      "createdAt": "2019-08-01T21:04:00.176Z",
+      "id": 8
+    },
+    {
+      "player_one": "X",
+      "player_two": "O",
+      "winner": "X",
+      "createdAt": "2019-08-01T21:15:03.183Z",
+      "id": 9
+    },
+    {
+      "player_one": "X",
+      "player_two": "O",
+      "winner": "X",
+      "createdAt": "2019-08-01T21:16:22.480Z",
+      "id": 10
+    },
+    {
+      "player_one": "X",
+      "player_two": "O",
+      "winner": "X",
+      "createdAt": "2019-08-01T21:17:11.278Z",
+      "id": 11
     }
   ],
   "users": [
