@@ -1,52 +1,49 @@
 import React, { Component } from 'react';
-import Spinner from 'react-spinkit';
+import { connect } from 'react-redux';
+import { bool, func, arrayOf, string, shape, number } from 'prop-types';
 
-import MatchesService from '~services/MatchesService';
+import { PLAYER_ONE, PLAYER_TWO } from '~constants/';
 
-import styles from './styles.module.scss';
+import matchesActions from '~redux/matches/actions';
+
+import Layout from './layout';
 
 class Podium extends Component {
-  state = {
-    matches: null,
-    loading: true
-  };
-
-  loadMatches = async () => {
-    const matches = await MatchesService.getMatches();
-    this.setState({ loading: false, matches });
-  };
-
   componentDidMount() {
-    this.loadMatches();
+    const { getMatches } = this.props;
+    getMatches();
   }
 
   render() {
-    const { matches, loading } = this.state;
-    return (
-      <div className={styles.container}>
-        {loading ? (
-          <Spinner name="ball-scale-ripple" color="green" />
-        ) : (
-          <ul className={styles.matches}>
-            <li>
-              <span role="img" aria-label="coup">
-                🏆
-              </span>
-              <h1>Podium</h1>
-              <span role="img" aria-label="coup">
-                🏆
-              </span>
-            </li>
-            {matches.map(({ createdAt, player_one: playerOne, player_two: playerTwo, winner }) => (
-              <li key={createdAt}>
-                {playerOne} v {playerTwo}: {winner}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
+    const { matches, onLoading } = this.props;
+    return <Layout matches={matches} onLoading={onLoading} />;
   }
 }
 
-export default Podium;
+Podium.propTypes = {
+  getMatches: func,
+  matches: arrayOf(
+    shape({
+      [PLAYER_ONE]: string,
+      [PLAYER_TWO]: string,
+      winner: string,
+      createdAt: string,
+      id: number
+    })
+  ),
+  onLoading: bool
+};
+
+const mapStateToProps = store => ({
+  matches: store.matches.matches,
+  onLoading: store.matches.matchesLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(matchesActions.matches())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Podium);

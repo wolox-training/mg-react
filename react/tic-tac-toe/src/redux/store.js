@@ -4,10 +4,14 @@ import thunk from 'redux-thunk';
 import { fetchMiddleware } from 'redux-recompose';
 
 import auth from './login/reducer';
+import matches from './matches/reducer';
+import game from './game/reducer';
 
 const reducers = combineReducers({
   form: formReducer,
-  auth
+  auth,
+  matches,
+  game
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle

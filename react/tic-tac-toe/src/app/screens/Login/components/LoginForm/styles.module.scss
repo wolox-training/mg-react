@@ -1,6 +1,8 @@
 @import './src/scss/colors';
 
 .login {
+  border-radius: 4px;
+  border: 3px outset $black;
   display: flex;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
@@ -16,10 +18,18 @@
 
 .submit {
   background-color: $green;
+  border-radius: 4px;
+  box-shadow: 0 5px 6px $dust-gray;
   color: $white;
   padding: 10px;
+  transition-duration: 0.4s;
 
   &:disabled {
     background-color: $grey;
+  }
+
+  &:active:hover {
+    background-color: $dark-green;
+    box-shadow: 0 1px 1px $dust-gray;
   }
 }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { func } from 'prop-types';
 
-import MatchesService from '~services/MatchesService';
+import GameActions from '~redux/game/actions';
+
+import { calculateWinner } from '~utils/GeneralUtils';
 
 import { PLAYER_ONE, PLAYER_TWO } from '~constants/';
 
@@ -19,24 +23,13 @@ class Game extends Component {
     stepNumber: 0
   };
 
-  calculateWinner = squares => {
-    const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
-      }
-    }
-    return null;
-  };
-
   handleClick = id => {
     const { history, stepNumber, xIsNext } = this.state;
     const historyPoint = history.slice(0, stepNumber + 1);
     const current = historyPoint[historyPoint.length - 1];
     const squares = current.squares.slice();
 
-    if (this.calculateWinner(squares) || squares[id]) {
+    if (calculateWinner(squares) || squares[id]) {
       return;
     }
     squares[id] = xIsNext ? 'X' : 'O';
@@ -49,17 +42,19 @@ class Game extends Component {
 
   handleMove = move => this.setState({ stepNumber: move, xIsNext: move % 2 === 0 });
 
-  postToPodium = winner =>
-    MatchesService.postMatch({
+  postToPodium = winner => {
+    const { postWinner } = this.props;
+    postWinner({
       [PLAYER_ONE]: 'X',
       [PLAYER_TWO]: 'O',
       winner
     });
+  };
 
   render() {
     const { history, stepNumber, xIsNext } = this.state;
     const current = history[stepNumber];
-    const winner = this.calculateWinner(current.squares);
+    const winner = calculateWinner(current.squares);
     let status = null;
     const moves = history.map((step, move) => {
       const desc = move > 0 ? `Go to move # ${move}` : 'Go to game start';
@@ -92,4 +87,15 @@ class Game extends Component {
   }
 }
 
-export default Game;
+Game.propTypes = {
+  postWinner: func
+};
+
+const mapDispatchToProps = dispatch => ({
+  postWinner: values => dispatch(GameActions.winner(values))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Game);

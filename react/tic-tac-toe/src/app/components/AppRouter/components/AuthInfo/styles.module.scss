@@ -1,43 +1,111 @@
 @import './src/scss/colors';
 
+%title-spoiler {
+  border-bottom: 30px solid $black;
+  border-left: 2px solid transparent;
+  border-right: 10px solid transparent;
+  content: '';
+  margin-bottom: 10px;
+  position: absolute;
+  width: 80px;
+}
+
 .nav-button {
   background-color: $black;
+  box-shadow: 0 5px 6px $dust-gray;
   color: $white;
   margin: 0 5px;
   padding: 10px;
-  
+  transition-duration: 0.4s;
+
   &:hover {
     background-color: $orange;
+  }
+
+  &:active {
+    background-color: $red;
+    box-shadow: 0 1px 1px $dust-gray;
   }
 }
 
 .nav-link {
   background-color: $black;
+  border-radius: 2px;
+  box-shadow: 0 5px 6px $dust-gray;
   color: $white;
   display: flex;
   margin: 0 5px;
   max-width: 80px;
   padding: 10px;
+  transition-duration: 0.4s;
   width: 100%;
-
+  
   &:hover {
     background-color: $green;
+  }
+
+  &:active {
+    box-shadow: 0 2px 2px $dust-gray;
+  }
+
+  &:focus {
+    box-shadow: 0 2px 2px $dust-gray;
+    color: $white;
   }
 }
 
 .navbar {
   align-items: center;
-  border-bottom: thick double $grey;
+  border-bottom: thick $grey;
+  box-shadow: 0 2px 2px;
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
   text-decoration: none;
 }
 
+.nav-title {
+  background-color: $black;
+  box-shadow: 0 12px 24px $black;
+  color: $white;
+  max-width: 92px;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    @extend %title-spoiler;
+    
+    bottom: 18px;
+  }
+
+  &::after {
+    @extend %title-spoiler;
+    
+    right: 0px;
+    top: 28px;
+    transform: rotate(180deg);
+  }
+}
+
 .error {
-  color: orange;
+  background-color: $orange;
+  border-radius: 2px;
+  color: $white;
+  margin-bottom: 10px;
+  padding: 4px 100px;
+  position: relative;
+
+  &::before {
+    border-bottom-color: $orange;
+    border-style: solid;
+    border-width: 0 8px 8px 0;
+    bottom: -8px;
+    content: '';
+    left: 20px;
+    position: absolute;
+    transform: rotate(0.5turn);
+  }
 
   &-container {
     display: flex;

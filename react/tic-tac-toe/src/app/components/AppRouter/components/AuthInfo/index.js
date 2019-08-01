@@ -10,7 +10,7 @@ function AuthInfo({ isAuth, onError, onClick }) {
   if (isAuth) {
     return (
       <nav className={styles.navbar}>
-        {WELCOME_MSJ}
+        <h5 className={styles.navTitle}>{WELCOME_MSJ}</h5>
         <Link className={styles.navLink} to={routes.GAME}>
           <span role="img" aria-label="controller">
             🎮

@@ -8,9 +8,9 @@
     border-image: linear-gradient(to bottom, $black, transparent) 1 100%;
     border-style: solid;
     border-width: 3px;
-    color: white;
+    color: $white;
     max-width: 250px;
-    padding: 1rem;
+    padding: 16px;
   }
 }
 

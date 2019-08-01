@@ -35,8 +35,8 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  squares: arrayOf(string).isRequired,
-  onClick: func.isRequired
+  onClick: func.isRequired,
+  squares: arrayOf(string)
 };
 
 export default Board;

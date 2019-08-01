@@ -1,4 +1,4 @@
-@import '../../../../../scss/colors';
+@import './src/scss/colors';
 
 .custom-input-container {
   margin-bottom: 25px;
@@ -22,8 +22,10 @@
 
 .error-text {
   background-color: $red;
+  border-radius: 4px;
   color: $white;
   margin-top: 10px;
+  padding: 2px;
   position: relative;
 
   &::before {
