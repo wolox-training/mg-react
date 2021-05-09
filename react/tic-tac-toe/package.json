@@ -10,7 +10,7 @@
     "connected-react-router": "^5.0.1",
     "history": "^4.7.2",
     "i18next": "^12.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "node-sass": "^4.10.0",
     "postcss": "^7.0.6",
     "react": "^16.6.3",
